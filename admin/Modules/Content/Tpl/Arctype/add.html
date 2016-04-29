@@ -1,0 +1,161 @@
+<div class="pageContent">
+	<form method="post" name="form1" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<input name="pid" type="hidden" value="<{$vo.pid}>"/>
+	<div class="tabs" currentIndex="0" eventType="click">
+		<div class="tabsHeader">
+			<div class="tabsHeaderContent">
+				<ul>
+					<li><a href="javascript:;"><span>常规选项</span></a></li>
+					<li><a href="javascript:;"><span>高级选项</span></a></li>
+                    <li><a href="javascript:;"><span>栏目内容</span></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="tabsContent">
+			<div>
+            <div class="pageFormContent" layoutH="97">
+            <p>
+				<label>是否启用：</label>
+                <label style="width:40px;"><input name="status" type="radio" value="1" checked="checked" />&nbsp;是</label><label style="width:40px;"><input type="radio" name="status" value="0" />&nbsp;否</label>
+			</p>
+			<eq name="vo.cid" value="">
+			<p>
+            <label>内容模型：</label>
+            <select name="cid">
+                <volist name="conm" id="v">
+                <option value="<{$v.id}>"><{$v.typename}></option>
+                </volist>
+			</select>
+            </p>
+			<else/>
+			<input name="cid" type="hidden" size="40" value="<{$vo.cid}>"/>
+			</eq>
+			<p>
+				<label>栏目名称：</label>
+				<input name="typename" type="text" size="30" alt="请输入栏目名称" id="typename" class="required"/>
+			</p>
+			<p>
+				<label>栏目图片：</label>
+				<input name="typeimg" id="typeimg" type="text"/><a class="button uploadpic" onclick="upload('typeimg')" href="javascript:;"><span>选择图片</span></a>
+			</p>
+			<p>
+				<label>上级目录：</label>
+				<input name="typedir" type="text" value="<{$vo.typedir}>" class="textInput readonly" size="30" readonly="true"/>
+			</p>
+			<p>
+				<label>文件保存目录：</label>
+				<input name="dirname" type="text" id="dirname" class="required" size="20"/>
+				<a class="button pinyin" href="javascript:;"><span>拼音</span></a>
+			</p>
+			<dl>
+			<dt>目录相对位置：</dt>
+			<dd>
+				<label style="width:80px;"><input name="referpath" type="radio" value="0"checked="checked"/>&nbsp;上级目录</label>
+                <label style="width:80px;"><input name="referpath" type="radio" value="1" />&nbsp;根目录</label>
+			</dd>
+			</dl>
+			<dl>
+			<dt>栏目属性：</dt>
+			<dd>
+				<label style="width:80px;"><input name="isdefault" type="radio" value="1"checked="checked"/>&nbsp;生成静态</label>
+                <label style="width:80px;"><input name="isdefault" type="radio" value="0" />&nbsp;动态浏览</label>
+			</dd>
+			</dl>
+			<p>
+				<label>默认页的名称：</label>
+				<input name="defaultname" type="text" size="20" value="index" class="required alphanumeric"/>
+			</p>
+            <dl style="height:65px;">
+			<dt>栏目属性：</dt>
+			<dd><label style="width:300px;"><input name="ispart" type="radio" value="1" />频道封面（栏目本身不允许发布文档）</label>
+                <label style="width:400px;"><input name="ispart" type="radio" value="2" checked="checked" />最终列表栏目（允许在本栏目发布文档，并生成文档列表） </label>
+                <label style="width:300px;"><input name="ispart" type="radio" value="3" />外部连接（在"外部地址"处填写网址）</label></dd>
+			</dl>
+			<dl>
+			<dt>外部地址：</dt>
+			<dd><input name="typeurl" type="text" size="40" value="<{$vo.typeurl}>"/></dd>
+			</dl>
+            </div>
+			</div>
+			<div>
+            <div class="pageFormContent" layoutH="97">
+			<p>
+				<label>频道模版：</label>
+                <input name="index.temp" type="text" size="30" value="index_article.html" class="required"/>
+                <a class="btnLook" href="<{:U('Edition/Templets/public_list')}>" width="300" height="350" lookupGroup="index">选择频道模版</a>
+			</p>
+			<p>
+				<label>列表模版：</label>
+				<input name="list.temp" type="text" size="30" value="list_article.html" class="required"/>
+                <a class="btnLook" href="<{:U('Edition/Templets/public_list')}>" width="300" height="350" lookupGroup="list" rel="selecttemplets">选择列表模版</a>
+			</p>
+			<p>
+				<label>内容模版：</label>
+				<input name="article.temp" type="text" size="30" value="article_article.html" class="required"/>
+                <a class="btnLook" href="<{:U('Edition/Templets/public_list')}>" width="300" height="350" lookupGroup="article">选择内容模版</a>
+			</p>
+			<p>
+				<label>列表命名规则：</label>
+				<input name="listrule" type="text" size="30" value="{typedir}/list_{tid}_{p}" class="required"/>
+			</p>
+			<p>
+				<label>文章命名规则：</label>
+				<input name="arctrule" type="text" size="30" value="{typedir}/{aid}" class="required"/>
+			</p>
+			<p>
+				<label>列表每页条数：</label>
+				<input name="listnum" type="text" size="20" value="12" class="required digits"/>
+			</p>
+			<p>
+				<label>相关链接条数：</label>
+				<input name="linknum" type="text" size="20" value="6" class="required digits"/>
+			</p>
+			<dl>
+			<dt>栏目关键字：</dt>
+			<dd><input name="keywords" type="text" size="40"/></dd>
+			</dl>
+            <dl style="height:47px;">
+			<dt>栏目描述：</dt>
+			<dd><textarea name="description" cols="60" style="height:40px;"></textarea></dd>
+			</dl>
+			<dl>
+			<dt>SEO标题：</dt>
+			<dd><input name="seotitle" type="text" size="40"/></dd>
+			</dl>
+            </div>
+			</div>
+            <div>
+			<div class="pageFormContent" layoutH="97">
+            说明：栏目内容是单独页的一种方式，可在栏目模板中用<{$field.content}>调用，通常用于企业简介之类的用途。
+				<textarea name="content" id="editor" style="width:100%;height:330px;visibility:hidden;"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="tabsFooter">
+			<div class="tabsFooterContent"></div>
+		</div>
+	</div>
+	<div class="formBar">
+		<ul>
+			<li><div class="buttonActive"><div class="buttonContent"><button type="submit" id="submit">保存</button></div></div></li>
+			<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+		</ul>
+	</div>
+	</form>
+<script type="text/javascript">
+var editor = KindEditor.create('#editor',{
+	uploadJson : '<{:U('Admin/Public/upload')}>',
+	fileManagerJson : '<{:U('Admin/Public/imglist')}>',
+	allowFileManager : true
+});
+$('#submit').click(function(){
+	$('#editor').val(editor.html());
+});
+$('.pinyin').click(function(){
+	url = "<{:U('Public/pinyin')}>&name="+$('#typename').val();
+    $.get(url,function(jsondata){
+		$('#dirname').val(jsondata);
+	})
+})
+</script>
+</div>

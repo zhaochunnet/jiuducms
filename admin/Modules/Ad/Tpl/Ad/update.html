@@ -1,0 +1,121 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);" novalidate="novalidate">
+	<input type="hidden" name="id" value="<{$vo.id}>">
+		<div class="pageFormContent" layoutH="57">
+            <p>
+            <label>广告分类：</label>
+            <select name="typeid">
+                <volist name="value" id="v">
+                <option value="<{$v.id}>" <eq name="vo.typeid" value="$v.id">selected="selected"</eq>><{$v.name}></option>
+                </volist>
+			</select>
+            </p>
+            <p>
+            <label>广告类型：</label>
+            <select name="type" id="adtype">
+				<option value="0" <eq name="vo.type" value="0">selected="selected"</eq>>图片广告</option>
+                <option value="1" <eq name="vo.type" value="1">selected="selected"</eq>>文字广告</option>
+                <option value="2" <eq name="vo.type" value="2">selected="selected"</eq>>代码广告</option>
+			</select>
+            </p>
+			<p>
+				<label>广告名称：</label>
+				<input name="title" type="text" size="30" value="<{$vo.title}>" alt="请输入广告名称" class="required"/>
+			</p>
+            <p class="text" style="display:none">
+				<label>广告文字：</label>
+				<input name="text" type="text" class="textrequired" value="<{$vo.text}>" size="30"/>
+			</p>
+            <dl style="height:36px; display:none" class="html">
+			<dt>HTML代码：</dt>
+			<dd><textarea name="htmlcode" class="htmlrequired" cols="50" style="height:30px;"><{$vo.htmlcode}></textarea></dd>
+			</dl>
+            <p class="img">
+				<label>图片地址：</label>
+				<input name="picurl" id="picurl" class="imgrequired required" value="<{$vo.picurl}>" type="text"/><a class="button uploadpic" onclick="upload('picurl')" href="javascript:;"><span>选择图片</span></a>
+			</p>
+            <p class="img">
+				<label>图片规格：</label>
+				<input name="pic_width" id="width" type="text" value="<{$vo.pic_width}>" size="4" /> <label style="width:5px;">X</label> <input id="height" name="pic_height" type="text" size="4" value="<{$vo.pic_height}>"/> <label style="width:40px;">(宽X高)</label>
+			</p>
+			<div class="fushu">
+			<p class="fushu">
+				<label>链接地址：</label>
+				<input name="url" type="text" class="urlrequired required" value="<{$vo.url}>" size="30"/>
+			</p>
+            <p class="fushu">
+				<label>打开方式：</label>
+				<select name="target">
+                    <option value="_blank" <eq name="vo.target" value="_blank">selected="selected"</eq>>新窗口打开</option>
+                    <option value="_self" <eq name="vo.target" value="_self">selected="selected"</eq>>在原窗口打开</option>
+                    <option value="_parent" <eq name="vo.target" value="_parent">selected="selected"</eq>>父窗口打开</option>
+				</select>
+			</p>
+            <p class="fushu">
+				<label>提示文字：</label>
+				<input name="alt" type="text" size="30" value="<{$vo.alt}>"/>
+			</p>
+			<dl style="height:36px;">
+			<dt>广告描述：</dt>
+			<dd><textarea name="description" cols="50" style="height:30px;"></textarea></dd>
+			</dl>
+			</div>
+            <p style="width:98%">
+				<label>过期时间：</label>
+				<label style="width:10px;">从</label> <input name="starttime" type="text" size="10" id="dataval" class="date" format="yyyy-MM-dd" value="<{$vo.starttime|date="Y-m-d",###}>"/> <label style="width:10px;">到</label> <input name="endtime" type="text" size="10" id="dataval" class="date" format="yyyy-MM-dd" value="<neq name="vo.endtime" value="0"><{$vo.endtime|date="Y-m-d",###}></neq>" /> <label style="width:100px;">(不填为永不过期)</label>
+			</p>
+            <dl style="height:36px;">
+			<dt>过期后显示：</dt>
+			<dd><textarea name="reptext" cols="50" style="height:30px;" ><{$vo.reptext}></textarea></dd>
+			</dl>
+            <dl style="height:36px;">
+			<dt>备注：</dt>
+			<dd><textarea name="remark" cols="50" style="height:30px;"><{$vo.remark}></textarea></dd>
+			</dl>
+            </div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li><li>
+				<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>
+<script language="javascript">
+$(function(){
+	$('#adtype').change(function(){
+		if($(this).val() == 0){
+			$('.img').show();
+			$('.text').hide();
+			$('.html').hide();
+			$('.fushu').show();
+			$('.imgrequired').addClass('required');
+			$('.urlrequired').addClass('required');
+			$('.textrequired').removeClass('required');
+			$('.htmlrequired').removeClass('required');
+		}else if($(this).val() == 1){
+			$('.text').show();
+			$('.img').hide();
+			$('.html').hide();
+			$('.fushu').show();
+			$('.urlrequired').addClass('required');
+			$('.imgrequired').removeClass('required');
+			$('.textrequired').addClass('required');
+			$('.htmlrequired').removeClass('required');
+		}else{
+			$('.html').show();
+			$('.text').hide();
+			$('.img').hide();
+			$('.fushu').hide();
+			$('.urlrequired').removeClass('required');
+			$('.imgrequired').removeClass('required');
+			$('.textrequired').removeClass('required');
+			$('.htmlrequired').addClass('required');
+		}
+	});
+	$('#adtype').change();
+})
+</script>
+<style type="text/css">
+.uploadpic{margin-left:10px;} 
+</style>

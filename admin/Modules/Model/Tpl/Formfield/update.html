@@ -1,0 +1,59 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+    <input name="id" type="hidden" value="<{$vo.id}>" />
+    <input name="oldfieldname" type="hidden" value="<{$vo.fieldname}>" />
+    <input name="fid" type="hidden" value="<{$Think.get.fid}>" />
+		<div class="pageFormContent" layoutH="55">
+        	<p style="width:98%;">
+				<label>表单提示文字：</label>
+				<input name="itemname" type="text" size="59" alt="请输入表单提示文字" value="<{$vo.itemname}>" class="required"/>
+                <span class="info">&nbsp;发布内容时显示的提示文字</span>
+			</p>
+            <p style="width:98%;">
+				<label>字段名称：</label>
+				<input name="fieldname" type="text" size="59" alt="请输入字段名称" value="<{$vo.fieldname}>" class="required alphanumeric"/>
+                <span class="info">&nbsp;只能用英文字母或数字，数据表的真实字段名</span>
+			</p>
+            <dl style="width:100%; height:90px;">
+			<dt>数据类型：</dt>
+			<dd style="width:600px;">
+            <volist id="v" name="fieldtype">
+				<label><input type='radio' class='np' name='dtype' value="<{$v.id}>" <eq name="vo.dtype" value="$v.id">checked="checked"</eq>/><{$v.name}></label>
+			</volist>
+			</dd>
+			</dl>
+        	<dl style="width:100%; height:68px;">
+			<dt>默认值：</dt>
+			<dd style="width:600px;"><textarea name="vdefault" cols="51" style="height:60px;"><{$vo.vdefault}></textarea><span class="info" style="float:none;">如果定义数据类型为select、radio、checkbox时，此处填写被选择的项目(用“,”分开，如“男,女,人妖”)。</span></dd>
+			</dl>
+            <p style="width:98%;">
+				<label>最大长度：</label>
+				<input name="maxlength" type="text" size="59" alt="250" value="<{$vo.maxlength}>" class="digits"/>
+                <span class="info">&nbsp;文本数据必须填写，大于255为text类型</span>
+			</p>
+			<p style="width:98%;">
+				<label>是否在列表显示：</label>
+				<label style="width:50px;"><input type='radio' name='listfield' <eq name="vo.listfield" value="1">checked="checked"</eq> value="1">是</label>
+                <label style="width:50px;"><input type='radio' name='listfield' <eq name="vo.listfield" value="0">checked="checked"</eq> value="0">否</label>
+                <span class="info">&nbsp;如果选择是，该字段将出现在信息列表中</span>
+			</p>
+			<p style="width:98%;">
+				<label>是否必填：</label>
+				<label style="width:50px;"><input type='radio' name='isnull' <eq name="vo.isnull" value="1">checked="checked"</eq> value="1">是</label>
+                <label style="width:50px;"><input type='radio' name='isnull' <eq name="vo.isnull" value="0">checked="checked"</eq> value="0">否</label>
+                <span class="info">&nbsp;如果定义数据类型为text时，是否必填项</span>
+			</p>
+            </div>
+		<div class="tabsFooter">
+			<div class="tabsFooterContent"></div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>

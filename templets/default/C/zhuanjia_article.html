@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title><{$field.typename}> - <{$global.jiudu_webname}></title>
+<meta name="Keywords"    content="<{$field.keywords}>" >
+<meta name="Description" content="<{$field.description}>" >
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta http-equiv="Cache-Control" content="must-revalidate,no-cache"/>
+<link rel="stylesheet" type="text/css" href="<{$global.tempdir}>/css/basic.css">
+<style type="text/css">
+.list-image li:last-child{ border:none;}
+.tab{ margin-top:10px; height:34px; border-bottom:1px solid #d4dae2;}
+.tab span { display:inline-block;line-height:24px; padding:0 10px; height:34px; }
+.tab span.current{ border-bottom:1px solid #005bac; position:relative;}
+.tab span.current a{ color:#FFF; border-radius:6px; padding:4px 8px;
+	background: -webkit-gradient(linear, 0 0, 0 100%,from(#187ce1), to(#005bac));
+	background:-moz-linear-gradient(top, #187ce1,#005bac 100%);
+	background:-o-linear-gradient(top, #187ce1,#005bac 100%);
+	background:linear-gradient(top, #187ce1,#005bac 100%);}
+.tab span.current b{border-color:#F1F8FF  #F1F8FF #005bac ;border-style:solid;border-width:4px;position:absolute;left:50%; bottom:0; magin-left:-3px;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+<include file="head.html" />
+<include file="nav.html" />
+    <div class="crumb">
+    	<p><{$newsnav}></p>
+    </div>
+	
+	<div class="tab">
+    	<span class="current" id="tab11"  onclick="toggleMenu('1','1');"><a> 整形专家</a><b></b></span> <span id="tab21" onclick="toggleMenu('2','1');"><a>激光专家</a><b></b></span><span id="tab31" onclick="toggleMenu('3','1');"><a>注射专家</a><b></b></span>
+    </div>
+	<script type="text/javascript">
+    function toggleMenu(the,id){
+	for(i=1;i<=3;i++){
+			if(i==the){
+				document.getElementById('tab'+i+id).className ='current';
+				document.getElementById('cont'+i+id).className = '';
+			}else{
+				document.getElementById('tab'+i+id).className = '';
+				document.getElementById('cont'+i+id).className = 'none';
+			}
+		}
+	}
+</script>
+
+	<div id="cont11">
+    <div class="list-image">
+    	<ul>
+			<jiudu:arclist typeid='14078' row='44' orderby='pubdate desc'>
+			<li>
+            	<div class="p"><a href="<{$jiudu.titleurl}>"><img src="<{$jiudu.litpic}>" width="100" height="110"></a></div>
+            	<div class="intro"><h3><a href="<{$jiudu.titleurl}>"><{$jiudu.title}><span><{$jiudu.shorttitle}></span></a></h3><p><a href="<{$jiudu.titleurl}>"><{$jiudu.description|esub='44'}>...  <span>[详细]</span></a></p></div>
+            </li>
+			</jiudu:arclist>
+        </ul>
+    </div>
+    <!--experts-->
+	</div>
+	
+	<div id="cont21" class="none">
+    <div class="list-image">
+    	<ul>
+			<jiudu:arclist typeid='14079' row='44' orderby='pubdate desc'>
+			<li>
+            	<div class="p"><a href="<{$jiudu.titleurl}>"><img src="<{$jiudu.litpic}>" width="100" height="110"></a></div>
+            	<div class="intro"><h3><a href="<{$jiudu.titleurl}>"><{$jiudu.title}><span><{$jiudu.shorttitle}></span></a></h3><p><a href="<{$jiudu.titleurl}>"><{$jiudu.description|esub='44'}>...  <span>[详细]</span></a></p></div>
+            </li>
+			</jiudu:arclist>
+        </ul>
+    </div>
+    <!--experts-->
+	</div>
+	
+	<div id="cont31" class="none">
+    <div class="list-image">
+    	<ul>
+			<jiudu:arclist typeid='14080' row='44' orderby='pubdate desc'>
+			<li>
+            	<div class="p"><a href="<{$jiudu.titleurl}>"><img src="<{$jiudu.litpic}>" width="100" height="110"></a></div>
+            	<div class="intro"><h3><a href="<{$jiudu.titleurl}>"><{$jiudu.title}><span><{$jiudu.shorttitle}></span></a></h3><p><a href="<{$jiudu.titleurl}>"><{$jiudu.description|esub='44'}>...  <span>[详细]</span></a></p></div>
+            </li>
+			</jiudu:arclist>
+        </ul>
+    </div>
+    <!--experts-->
+	</div>
+<include file="foot.html" />
+</body>
+</html>

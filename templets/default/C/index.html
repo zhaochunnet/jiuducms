@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title><{$global.jiudu_webname}> - 首页</title>
+<meta name="description" content="<{$global.jiudu_description}>" />
+<meta name="keywords" content="<{$global.jiudu_keywords}>" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link rel="stylesheet" type="text/css" href="/templets/default/C/css/basic.css">
+<style type="text/css">
+/*sroll_ad*/
+.ad {overflow:hidden;text-align:center;position:relative;margin:0 auto;}
+.adTip {position:absolute;bottom:10px;left:50%; text-align:center;}
+.adTip a{margin-right:5px;float:left;width:5px;height:5px;text-indent:-9988px;border-radius:20px 20px 20px 20px;}
+.adImg{width:100%;overflow:hidden;margin:0 auto;}
+/*.scroller1 a{float:left;width:100%; max-width:1000px;}*/
+.adTip a{ background:#fff;}
+.adTip a.active{ background:#005bac;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+<include file="head.html" />
+<include file="banner.html" />
+<include file="nav.html" />
+    <div class="title">
+    	<a href="/index.php?m=List&id=13756"><h2>海总动态</h2><span>MORE</span></a>
+    </div>
+    <ul class="headline">
+		<jiudu:arclist typeid='14074' row='1' orderby='pubdate desc'>
+    	<li><strong><a href="<{$jiudu.typeurl}>"><{$jiudu.typename}></a></strong><a href="<{$jiudu.titleurl}>"><{$jiudu.title}></a></li>
+		</jiudu:arclist>
+        <jiudu:arclist typeid='14075' row='1' orderby='pubdate desc'>
+    	<li><strong><a href="<{$jiudu.typeurl}>"><{$jiudu.typename}></a></strong><a href="<{$jiudu.titleurl}>"><{$jiudu.title}></a></li>
+		</jiudu:arclist>
+		<jiudu:arclist typeid='14076' row='1' orderby='pubdate desc'>
+    	<li><strong><a href="<{$jiudu.typeurl}>"><{$jiudu.typename}></a></strong><a href="<{$jiudu.titleurl}>"><{$jiudu.title}></a></li>
+		</jiudu:arclist>
+    </ul>
+    <div class="col">
+    	<div class="col-name"><a href="/index.php?m=List&id=13760"><img src="<{$global.tempdir}>/images/c1_n.png"></a></div>
+        <div class="col-p"><a href="/index.php?m=List&id=13760"><img src="<{$global.tempdir}>/images/c1.jpg"></a></div>
+    </div>
+    
+    <div class="col-list c1">
+    	<ul>
+			<jiudu:channel id="13760" type="son" row="7"> 
+			<li><a href="<{$jiudu.typeurl}>"  class="common"><{$jiudu.typename}></a></li>
+			</jiudu:channel>
+        </ul>
+    </div>
+    
+    <div class="col">
+    	<div class="col-name"><a href="/index.php?m=List&id=13767"><img src="<{$global.tempdir}>/images/c2_n.png"></a></div>
+        <div class="col-p"><a href="/index.php?m=List&id=13767"><img src="<{$global.tempdir}>/images/c2.jpg"></a></div>
+    </div>
+    
+    <div class="col-list c2">
+    	<ul>
+        	<jiudu:channel id="13767" type="son" row="7"> 
+			<li><a href="<{$jiudu.typeurl}>"  class="common"><{$jiudu.typename}></a></li>
+			</jiudu:channel>
+        </ul>
+    </div>
+    
+    <div class="col">
+    	<div class="col-name"><a href="/index.php?m=List&id=13774"><img src="<{$global.tempdir}>/images/c3_n.png"></a></div>
+        <div class="col-p"><a href="/index.php?m=List&id=13774"><img src="<{$global.tempdir}>/images/c3.jpg"></a></div>
+    </div>
+    
+    <div class="col-list c3">
+    	<ul>
+			<jiudu:channel id="13774" type="son" row="7"> 
+			<li><a href="<{$jiudu.typeurl}>"  class="common"><{$jiudu.typename}></a></li>
+			</jiudu:channel>
+        </ul>
+    </div>
+    
+    <div class="title">
+    	<a href="/index.php?m=List&id=13758"><h2>海总荣誉</h2><span>MORE</span></a>
+    </div>
+    <ul class="list-pic">
+		<jiudu:arclist typeid='13758' row='4' orderby='pubdate desc'>
+		<li><a href="<{$jiudu.titleurl}>"><img  src="<{$jiudu.litpic}>"  /></a></li>
+		</jiudu:arclist>
+    </ul>
+    
+    <div class="search">
+  <form action="/index.php?m=Search" method="post" name="formsearch">
+    <div class="sea">
+      <input class="text" type="text" name="keyword" value="请输入您要搜索的内容" onFocus="if(this.value==this.defaultValue){this.value='';this.style.color='#666666';};"  onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#666666';}" />
+    </div>
+    <div class="seabtn">
+      <input name="" type="submit" title="搜索" value="搜索">
+    </div>
+  </form>
+</div>
+<include file="foot.html" />
+</body>
+</html>

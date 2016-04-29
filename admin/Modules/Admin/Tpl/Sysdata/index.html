@@ -1,0 +1,56 @@
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="icon" href="<{:U('__MODULE__/backup')}>" target="dialog" rel="backup" mask="true"><span>备份数据</span></a></li>
+			<li><a class="add" href="<{:U('__MODULE__/restore')}>" target="dialog" rel="restore" mask="true" width="400" height="200"><span>恢复数据</span></a></li>
+			<li><a class="icon" href="<{:U('__MODULE__/repair')}>&navTabId=__MODULE__" target="selectedTodo" rel="name" postType="string"><span>修复选中</span></a></li>
+			<li><a class="icon" href="<{:U('__MODULE__/optimize')}>&navTabId=__MODULE__" target="selectedTodo" rel="name" postType="string"><span>优化选中</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="98" >
+		<thead>
+			<tr>
+				<th width="30" align="center"><input type="checkbox" class="checkboxCtrl" group="name" /></th>
+				<th width="100" align="center">表名</th>
+                <th width="60" align="center">类型</th>
+                <th width="130" align="center">编码</th>
+                <th width="70" align="center">记录数</th>
+                <th width="80" align="center">大小</th>
+                <th width="70" align="center">碎片</th>
+				<th width="200" align="center">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+        	<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo.Name}>">
+                <td><input type="checkbox" name="name" value="<{$vo.Name}>" /></td>
+                <td style="text-align:left;"><a href="<{:U('__MODULE__/structure')}>&name=<{$vo.Name}>" target="dialog" rel="add" mask="true" width="600" height="410" title="查看表结构"><{$vo.Name}></a></td>
+                <td><{$vo.Engine}></td>
+                <td><{$vo.Collation}></td>
+                <td style="text-align:right;"><{$vo.Rows}></td>
+                <td style="text-align:right;"><{$vo.Size}></td>
+				<td style="text-align:right;"><eq name="vo.Data_free" value="0 B"><{$vo.Data_free}><else/><a href="<{:U('__MODULE__/optimize')}>&name=<{$vo.Name}>&navTabId=__MODULE__" target="ajaxTodo" title="优化"><{$vo.Data_free}></a></eq></td>
+				<td><a href="<{:U('__MODULE__/structure')}>&name=<{$vo.Name}>" target="dialog" rel="add" mask="true" width="600" height="410">查看表结构</a> | 
+				<a href="<{:U('__MODULE__/repair')}>&name=<{$vo.Name}>&navTabId=__MODULE__" target="ajaxTodo">修复</a> | 
+				<a href="<{:U('__MODULE__/optimize')}>&name=<{$vo.Name}>&navTabId=__MODULE__" target="ajaxTodo">优化</a> | 
+				<a href="<{:U('__MODULE__/truncate')}>&name=<{$vo.Name}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要清空吗?">清空</a> | 
+				<a href="<{:U('__MODULE__/foreverdelete')}>&name=<{$vo.Name}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要删除吗?">删除</a></td>
+			</tr>
+            </volist>
+		</tbody>
+		<thead>
+			<tr>
+				<th width="30" align="center"></th>
+				<th width="100" align="center">总计 <{$row}> 个表</th>
+                <th width="60" rowspan="2" align="center"></th>
+                <th width="130" align="center">合计</th>
+                <th width="70" align="right"><{$length}></th>
+                <th width="80" align="right"><{$size}></th>
+                <th width="70" align="right"><{$datafree}></th>
+				<th width="200" align="center"></th>
+			</tr>
+		</thead>
+	</table>
+	<div class="panelBar">
+	</div>
+</div>

@@ -1,0 +1,112 @@
+<form id="pagerForm" action="<{:U('__MODULE__/index')}>" method="post">
+	<input type="hidden" name="pageNum" value="<{$page.pageNum}>"/>
+	<input type="hidden" name="numPerPage" value="<{$page.numPerPage}>"/>
+	<input type="hidden" name="_order" value="<{$_REQUEST._order}>"/>
+	<input type="hidden" name="_sort" value="<{$_REQUEST._sort}>"/>
+</form>
+<div class="pageHeader">
+	<form rel="pagerForm" onsubmit="return navTabSearch(this);" action="<{:U('__MODULE__/index')}>" method="post">
+	<div class="searchBar">
+		<ul class="searchContent">
+			<li>
+				<label>标题：</label>
+				<input type="text" name="title" value="<{$where.title}>"/>
+			</li>
+            <li>
+				<label>栏目：</label>
+				<select name="typeid">
+				<option value="0">全部栏目</option>
+				<volist id="vo" name="value">
+				<option value="<{$vo.id}>" <neq name="vo.ispart" value="2">disabled="disabled" </neq><eq name="vo.id" value="$where.typeid">selected="selected"</eq>><{$vo.fullname}></option>
+                </volist>
+			</select>
+			</li>
+		</ul>
+		<div class="subBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+			</ul>
+		</div>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="<{:U('__MODULE__/add')}>&typeid=<{$where.typeid}>" target="navTab" rel="Archivesadd" title="新增文档"><span>新增</span></a></li>
+			<li><a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&id={sid_user}&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除吗？" warn="请选择文档"><span>删除</span></a></li>
+			<li><a class="edit" href="<{:U('__MODULE__/update')}>&id={sid_user}&navTabId=__MODULE__" target="navTab" rel="Archivesupdate" mask="true" warn="请选择文档" title="编辑文档"><span>编辑</span></a></li>
+		</ul>
+	</div>
+    <form action="<{:U('__MODULE__/caozuo')}>&navTabId=__MODULE__" method="post" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone)">
+	<table class="table" width="100%" layoutH="173" >
+		<thead>
+			<tr>
+            	<th width="20" align="center"></th>
+				<th width="30" align="center" orderField="id" <if condition="$_REQUEST._order eq 'id'">class="<{$_REQUEST._sort}>"</if>>ID</th>
+				<th width="110" align="center">标题</th>
+                <th width="70" align="center" orderField="pubdate" <if condition="$_REQUEST._order eq 'pubdate'">class="<{$_REQUEST._sort}>"</if>>更新时间</th>
+                <th width="50" align="center" orderField="typeid" <if condition="$_REQUEST._order eq 'typeid'">class="<{$_REQUEST._sort}>"</if>>栏目名称</th>
+				<th width="30" align="center" orderField="click" <if condition="$_REQUEST._order eq 'click'">class="<{$_REQUEST._sort}>"</if>>点击</th>
+                <th width="50" align="center">作者</th>
+                <th width="30" align="center" orderField="status" <if condition="$_REQUEST._order eq 'status'">class="<{$_REQUEST._sort}>"</if>>状态</th>
+                <th width="80" align="center">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+        	<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo.id}>">
+				<td><input type="checkbox" name="c1[]" value="<{$vo.id}>" /></td>
+                <td><{$vo.id}></td>
+				<td><a href="<{:U('__MODULE__/update')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="navTab" rel="Archivesupdate" title="编辑文档"><{$vo.title}></a><neq name="vo['litpic']" value=""><font color="#FF0000">[图片]</font></neq>
+                <td><{$vo.pubdate|date="Y-m-d H:i:s",###}></td>
+                <td><{$type[$vo['typeid']]}></td>
+                <td><{$vo.click}></td>
+                <td><{$vo.writer}></td>
+                <td><eq name="vo.status" value="1"><a href="<{:U('__MODULE__/forbid')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要隐藏此文档?"><img src="Public/Images/ok.gif" width="20" height="20" /></a><else/><a href="<{:U('__MODULE__/resume')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要显示此文档?"><img src="Public/Images/error.gif" width="20" height="20" /></a></eq></td>
+				<td><a href="<{:U('__MODULE__/updateflag')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="dialog" rel="editflag" mask="true" width="400" height="200">编辑属性</a> | <a href="<{:U('__MODULE__/update')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="navTab" rel="Archivesedit" title="编辑文档">编辑</a> | <a target="_blank" href="../index.php?m=Article&id=<{$vo.id}>">预览</a> | <a href="<{:U('__MODULE__/move')}>&id=<{$vo.id}>&typeid=<{$vo.typeid}>&navTabId=__MODULE__" target="dialog" rel="move" mask="true" width="400" height="150">移动</a> | <a href="<{:U('__MODULE__/foreverdelete')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要删除吗?">删除</a></td>
+			</tr>
+            </volist>
+		</tbody>
+	</table>
+    <div class="formBar">
+		<li style="list-style:none;"><div class="button"><div class="buttonContent"><button type="button" class="checkboxCtrl" group="c1[]">全选</button></div></div></li>
+        <li style="list-style:none;"><div class="button"><div class="buttonContent"><button type="button" class="checkboxCtrl" group="c1[]" selectType="invert">反选</button></div></div></li>
+        <li style="list-style:none;"><label><input name="type" type="radio" value="1" />删除选中</label></li>
+        <li style="list-style:none;"><label><input name="type" type="radio" class="caozuo_move_radio" value="2" />移动到</label></li>
+		<li style="list-style:none;">
+			<select name="typeid" class="caozuo_move">
+				<option value="0" selected="selected">移动到&nbsp;&nbsp;&nbsp;</option>
+                <volist id="vo" name="value">
+				<option value="<{$vo.id}>" <neq name="vo.ispart" value="2">disabled="disabled" </neq>><{$vo.fullname}></option>
+                </volist>
+			</select>
+		</li>
+		<li style="list-style:none;"><label><input name="type" type="radio" value="4" />更新HTML文档</label></li>
+		<ul>
+			<li><div class="buttonActive"><div class="buttonContent"><button type="submit">执行</button></div></div></li>
+			<li><div class="buttonActive"><div class="buttonContent"><button type="reset">重置</button></div></div></li>
+		</ul>
+	</div>
+	<div class="panelBar">
+		<div class="pages">
+			<span>显示</span>
+			<select class="combox" name="numPerPage" onchange="navTabPageBreak({numPerPage:this.value})">
+				<option value="20" <eq name="page.numPerPage" value="20">selected</eq> >20</option>
+				<option value="40" <eq name="page.numPerPage" value="40">selected</eq>>40</option>
+				<option value="80" <eq name="page.numPerPage" value="80">selected</eq>>80</option>
+				<option value="100" <eq name="page.numPerPage" value="100">selected</eq>>100</option>
+			</select>
+			<span>共<{$page.totalCount}>条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="<{$page.totalCount}>" numPerPage="<{$page.numPerPage}>" pageNumShown="10" currentPage="<{$page.pageNum}>"></div>
+	</div>
+    </form>
+</div>
+<script type="text/javascript">
+$(function(){
+	$('.caozuo_move').change(function(){
+		$('.caozuo_move_radio').attr("checked","checked");
+	});
+})
+</script>

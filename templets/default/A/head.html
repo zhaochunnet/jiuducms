@@ -1,0 +1,26 @@
+<div id="header">
+	<div class="mbox">
+		<div id="tide">
+			<h1> <a href="<{$global.jiudu_basehost}>"><{$global.jiudu_webname}></a><span>专注互联网-专注PHP开发 网站制作与开发。</span> </h1>
+		</div>
+		<div id="h_serch">
+			<form name="keyform" method="get" id="searchform" class="search"
+              action="http://blog.akng.net/index.php">
+				<input type="text" name="keyword" class="keyword"
+                  onblur="if(this.value =='')this.value='Search...and Enter';"
+                  onclick="if(this.value=='Search...and Enter')this.value=''"
+                  value="Search...and Enter">
+				<input type="submit" name="submit" value="搜寻" class="submit">
+			</form>
+		</div>
+		<div id="navi">
+			<ul>
+				<li class="common"><a href="<{$global.jiudu_basehost}>"  class="current">首页</a></li>
+				<jiudu:channel type="top" row="10"> 
+				<li class="common"><a href="<{$jiudu.typeurl}>"  class="common"><{$jiudu.typename}></a></li>
+				</jiudu:channel> 
+				<div class="clear"></div>
+			</ul>
+		</div>
+	</div>
+</div>

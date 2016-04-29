@@ -1,0 +1,48 @@
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="edit" href="<{:U('__MODULE__/move')}>&path=<{$uparr}>" target="dialog" target="dialog" rel="move" mask="true" width="300" height="400" title="选择要移动到的目录"><span>上级目录</span></a></li>
+		</ul>
+	</div>
+	<form method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+	<input name="name" type="hidden" size="30" value="<{$name}>"/>
+	<table class="table" width="100%" layoutH="85" >
+		<thead>
+			<tr>
+				<th width="30" align="left">文件名</th>
+				<th width="20" align="left">操作</th>
+				<th width="20" align="left">选择</th>
+			</tr>
+		</thead>
+		<tbody>
+			<eq name="path" value="">
+			<tr target="sid_user" rel="<{$vo.id}>">
+                <td>
+				<p style="padding-left:23px; background:url('Public/Images/dir.gif') no-repeat 3px 3px;"><span style="line-height: 21px;"><{$lists.filename}></span></p>
+				</td>
+                <td></td>
+				<td><input type="radio" name="pathname" value="<{$lists.fileurl}>"></td>
+			</tr>
+			</eq>
+        	<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo.id}>">
+                <td>
+				<p style="padding-left:23px; background:url('Public/Images/dir.gif') no-repeat 3px 3px;"><a href="<{:U('__MODULE__/move')}>&path=<{$vo.fileurl}>&name=<{$name}>" title="选择要移动到的目录" target="dialog" rel="move" mask="true" width="300" height="400"><{$vo.filename}></a></p>
+				</td>
+                <td><a href="<{:U('__MODULE__/move')}>&path=<{$vo.fileurl}>&name=<{$name}>" title="选择要移动到的目录" target="dialog" target="dialog" rel="move" mask="true" width="300" height="400">打开</a></td>
+				<td><input type="radio" name="pathname" value="<{$vo.fileurl}>"></td>
+			</tr>
+            </volist>
+		</tbody>
+	</table>
+	<div class="formBar">
+		<li style="list-style:none;"><label><input name="overwrite" type="checkbox" value="1" />是否覆盖同名文件</label></li>
+		<ul>
+			<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+			<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+		</ul>
+	</div>
+	</form>
+</div>
+
+

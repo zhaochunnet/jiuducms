@@ -1,0 +1,127 @@
+<div class="pageContent">
+	<form name="form1" method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone)">
+		<div class="pageFormContent" layoutH="55">
+        	<p style="width:500px;">
+				<label>文档标题：</label>
+				<input name="title" type="text" style="width:350px;" alt="请输入文章标题" class="required"/>
+			</p>
+            <p>
+				<label>文档短标题：</label>
+				<input name="shorttitle" type="text" size="20" alt=""/>
+			</p>
+            <p style=" width:98%;">
+				<label>自定义属性：</label>
+				<volist name="flags" id="f">
+				<label style="width:60px;"><input name="flags[]" type="checkbox" value="<{$f.k}>"/>&nbsp;<{$f.v}>[<{$f.k}>]</label>
+                </volist>
+			</p>
+            <p>
+				<label>缩略图：</label>
+				<input name="litpic" id="litpic" type="text"/><a class="button uploadpic" onclick="upload('litpic')" href="javascript:;"><span>选择图片</span></a>
+			</p>
+             <p>
+				<label>权重：</label>
+				<input name="weight" type="text" size="8" alt="" value="50" class="digits"/>&nbsp;&nbsp;&nbsp;<font>越小越靠前</font>
+			</p>
+            <p>
+				<label>文档来源：</label>
+				<input name="dis.source" type="text" size="20" alt=""/>
+                <a class="btnLook" href="<{:U('Public/source')}>" width="300" height="150" lookupGroup="dis">选择来源</a>
+			</p>
+            <p>
+				<label>文档作者：</label>
+                <input name="district.writer" type="text"/>
+				<a class="btnLook" href="<{:U('Public/writer')}>" width="300" height="150" lookupGroup="district">选择作者</a>
+			</p>
+            <p>
+            <label>文章栏目：</label>
+            <select name="typeid" id="type">
+				<eq name="typeid" value="">
+				<option value="0" selected="selected" >选择栏目&nbsp;&nbsp;&nbsp;</option>
+				</eq>
+                <volist name="value" id="vo">
+                <option value="<{$vo.id}>" <neq name="vo.ispart" value="2">disabled="disabled" </neq><eq name="Think.get.typeid" value="$vo.id">selected="selected"</eq>><{$vo.fullname}></option>
+                </volist>
+			</select>
+            </p>
+			<eq name="typeid" value="">
+            <ul style="display:none;" id="typeli">
+            	<volist name="value" id="vo">
+            	<li><a id="typeli<{$vo.id}>" href="<{:U('__MODULE__/public_modelinfo')}>&type=add&id=<{$vo.id}>" target="ajax" rel="jbsxBox"></a></li>
+				</volist>
+            </ul>
+			</eq>
+			<p style="width:98%;display:none;" id="arcurl">
+				<label>外部地址：</label>
+				<input name="url" type="text" size="50" class="url textInput" value=""/>
+			</p>
+            <p style="width:98%;">
+				<label>关键字：</label>
+				<input name="keywords" type="text" size="60"/>
+			</p>
+            <dl class="nowrap">
+			<dt>文章摘要：</dt>
+			<dd><textarea name="description" class="textInput" style="width:400px; height:60px;"></textarea></dd>
+			</dl>
+            <div id="jbsxBox" class="unitBox">
+			<eq name="fieldset" value="">
+				<dl class="nowrap">
+					<dt>&nbsp;</dt>
+					<dd><textarea name="description" readonly="true" class="textInput" style="width:400px;height:60px;line-height:60px;font-size:20px;text-align:center">请选择栏目</textarea></dd>
+				</dl>
+			<else/>
+				<include file="$fieldset" />
+			</eq>
+            </div>
+            <p>
+				<label>浏览次数：</label>
+				<input name="click" type="text" size="20" value="<{$click}>" class="digits"/>
+			</p>
+            <p>
+				<label>发布时间：</label>
+				<input type="text" name="pubdate" id="dataval" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" value="<{$date}>" readonly="true"/>
+				<a class="inputDateButton" href="javascript:;">选择</a>
+			</p>
+            </div>
+		<div class="tabsFooter">
+			<div class="tabsFooterContent"></div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit" id="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+<eq name="typeid" value="">
+<script type="text/javascript">
+$(function(){
+	$('#type').change(function(){
+		$('#typeli'+$(this).val()).trigger('click');
+		$(window).scrollTop(0);
+	});
+})
+</script>
+</eq>
+<script type="text/javascript">
+$(function(){
+	$(window).scrollTop(0);
+	$("input[value='j']").click(function(){
+		if($(this).is(":checked")){
+			$('#arcurl').show();
+			$("input[name='url']").addClass('required');
+		}else{
+			$('#arcurl').hide();
+			$("input[name='url']").removeClass('required');
+			$("input[name='url']").val('');
+		}
+	});
+})
+</script>
+<style type="text/css">
+.uploadpic{margin-left:10px;} 
+.upload{margin-left:10px;}
+</style>
+</div>

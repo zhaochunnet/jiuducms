@@ -1,0 +1,8 @@
+@charset "utf-8";
+/* CSS Document */
+.nav{background:#005bac url(../images/nav_bg.png) repeat-x;}
+.top .hot-tel{color:#005bac; }
+.foot_link{background:#005bac;}
+.title a,.title h2,.title,.bottom a,.list li a:hover,.footer_link a,.list li a:hover span,h1 a,.article h1,.page a:hover,.page a,.pageNum p a,.content h1 a,.content h1,.link a,.body strong,.body a{color:#005bac;}
+.expert-img a.peoTxt,.expert-img a.peoTxt{color:#005bac;}
+.refer p a,.expert-img a.peoText{color:#FA5102;}

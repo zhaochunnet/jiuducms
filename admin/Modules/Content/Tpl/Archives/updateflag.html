@@ -1,0 +1,21 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+    <input type="hidden" name="id" value="<{$id}>" />
+		<div class="pageFormContent" layoutH="58">
+        	<p style="width:98%;">自定义属性</p>
+            <p style="width:98%;">
+                <volist name="flags" id="f">
+				<label style="width:70px;"><input name="flags[]" type="checkbox" value="<{$f.k}>" <eq name="f.t" value="1">checked="checked"</eq> />&nbsp;<{$f.v}>[<{$f.k}>]</label>
+                </volist>
+			</p>
+            </div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,34 @@
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="<{:U('__MODULE__/add')}>" target="dialog" mask="true"><span>新增</span></a></li>
+			<li><a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&id={sid_user}&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除吗？" warn="请选择节点"><span>删除</span></a></li>
+			<li><a class="edit" href="<{:U('__MODULE__/update')}>&id={sid_user}" target="dialog" mask="true" warn="请选择节点"><span>编辑</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="75">
+		<thead>
+		<tr>
+			<th width="40" align="center">编号</th>
+            <th width="100">节点名称</th>
+			<th width="100">节点标识</th>
+            <th width="300"></th>
+			<th align="center" width="50">系统内置</th>
+			<th align="center" width="50">状态</th>
+		</tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo['id']}>">
+				<td><{$vo['id']}></td>
+                <td><{$vo['fullname']}></td>
+				<td><{$vo['name']}></td>
+                <td></td>
+				<td><eq name="vo.core" value="1"><img src="Public/Images/ok.gif" width="20" height="20" /><else/><img src="Public/Images/error.gif" width="20" height="20" /></eq></td>
+				<td><eq name="vo.status" value="1"><a href="<{:U('__MODULE__/forbid')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要禁用此节点?"><img src="Public/Images/ok.gif" width="20" height="20" /></a><else/><a href="<{:U('__MODULE__/resume')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要启用此节点?"><img src="Public/Images/error.gif" width="20" height="20" /></a></eq></td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+	<div class="panelBar"></div>
+</div>

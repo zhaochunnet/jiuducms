@@ -1,0 +1,37 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<div class="pageFormContent" layoutH="57">
+			<p>
+				<label>表单名称：</label>
+				<input name="name" type="text" size="30" alt="请输入表单名称" class="required"/>
+			</p>
+            <p class="text">
+				<label>附加表：</label>
+				<input name="table" type="text" size="30" value="<{$table}>" class="required alphanumeric"/>
+			</p>
+			<p class="text">
+				<label>表单模板：</label>
+				<input name="index.temp" type="text" size="30" alt="请选择表单模版" value="diyforms_default.html" class="required"/>
+                <a class="btnLook" href="<{:U('Edition/Templets/public_list')}>" width="300" height="350" lookupGroup="index">选择模版</a>
+			</p>
+			<p>
+				<label>开启验证码：</label>
+                <label style="width:40px;"><input name="verify" type="radio" value="1" checked="checked" />&nbsp;是</label><label style="width:40px;"><input type="radio" name="verify" value="0" />&nbsp;否</label>
+			</p>
+			<p>
+				<label>是否需要审核：</label>
+                <label style="width:40px;"><input name="auditing" type="radio" value="1" checked="checked" />&nbsp;是</label><label style="width:40px;"><input type="radio" name="auditing" value="0" />&nbsp;否</label>
+			</p>
+			<p>
+				<label>是否启用：</label>
+                <label style="width:40px;"><input name="status" type="radio" value="1" checked="checked" />&nbsp;是</label><label style="width:40px;"><input type="radio" name="status" value="0" />&nbsp;否</label>
+			</p>
+        </div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

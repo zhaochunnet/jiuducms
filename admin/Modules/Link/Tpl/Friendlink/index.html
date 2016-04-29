@@ -1,0 +1,37 @@
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="<{:U('__MODULE__/add')}>" target="dialog" rel="add" mask="true" width="600" height="400"><span>新增</span></a></li>
+			<li><a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&id={sid_user}&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除吗？" warn="请选择要友情链接"><span>删除</span></a></li>
+			<li><a class="edit" href="<{:U('__MODULE__/update')}>&id={sid_user}&navTabId=__MODULE__" target="dialog" rel="update" mask="true" width="600" height="400" warn="请选择要修改的友情链接"><span>编辑</span></a></li>
+		</ul>
+	</div>
+
+	<table class="table" width="100%" layoutH="75" >
+		<thead>
+			<tr>
+				<th width="20" align="center"></th>
+				<th width="90" align="center">网站名称</th>
+				<th width="40" align="center">链接类型</th>
+                <th width="100" align="center">网站地址</th>
+                <th width="130" align="center">备注</th>
+				<th width="40" align="center">状态</th>
+                <th width="80" align="center">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+        	<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo.id}>">
+				<td><input type="checkbox" name="c1[]" value="<{$vo.id}>" /></td>
+                <td><{$vo.webname}></td>
+                <td><{$adtype[$vo['type']]}></td>
+                <td><{$vo.weburl}></td>
+                <td><{$vo.linksay}></td>
+                <td><eq name="vo.status" value="1"><a href="<{:U('__MODULE__/forbid')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要隐藏此友情链接?"><img src="Public/Images/ok.gif" width="20" height="20" /></a><else/><a href="<{:U('__MODULE__/resume')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要显示此友情链接?"><img src="Public/Images/error.gif" width="20" height="20" /></a></eq></td>
+				<td><a href="<{:U('__MODULE__/update')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="dialog" rel="edit" mask="true" width="600" height="400">修改</a> | <a href="<{:U('__MODULE__/foreverdelete')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要删除吗?">删除</a></td>
+			</tr>
+            </volist>
+		</tbody>
+	</table>
+	<div class="panelBar"></div>
+</div>

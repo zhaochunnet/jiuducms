@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/vnd.wap.xhtml+xml;charset=utf-8" />
+<meta content="max-age=1700" http-equiv="Cache-control">
+<meta name="viewport" content = "width=device-width; initial-scale=1.3;  minimum-scale=1.0; maximum-scale=no" />
+<meta content="telephone=no" name="format-detection">
+<meta name="Keywords"    content="[!--keywords--]" >
+<meta name="Description" content="[!--shortdes--]" >
+<link rel="stylesheet" href="<{$global.tempdir}>/css/basic.css" type="text/css" />
+<title>搜索[!--keywords--]的结果__[!--webkeywords--]</title>
+<style type="text/css">
+/*content*/
+.crumb{height:28px; border-bottom:1px solid #ebebeb;border-top:1px solid #ebebeb; line-height:28px; background:url(<{$global.tempdir}>/images/title_bg.png) repeat-x; }
+.crumb{text-indent:10px;overflow:hidden;}
+.crumb p{ line-height:28px; font-size:14px;overflow:hidden;}
+.crumb a,.crumb p{ color:#00000;}
+.content h1{font-size:15px;text-align:center; line-height:30px; padding:5px 0px 5px 0px;}
+.list li{line-height:25px;color:#26314f;font-size:14px;word-wrap: break-word;word-break:normal;}
+.list li a{display:block;text-indent:8px;width:100%;border-bottom:1px solid #ebebeb;}
+.list li a span{color:#9f9f9f;}
+/*.banner{padding-top:5px;}*/
+.bannerImg{background:#d0e097;}
+.bannerImg img{ vertical-align:middle;}
+.page{height:29px; line-height:29px;background:#efefef; text-align:center; border-bottom:1px solid #CACACA;}
+.page li{ display:inline;}
+.page a{ display:inline;height:29px; margin:0 2%;}
+.page span{ display:inline;height:29px; margin:0 2%;}
+/*fenye*/
+</style>
+
+</head>
+<body>
+[!--temp.head--]
+<div class="crumb">
+	<p>位置：搜索页 &gt; 搜索"[!--keywords--]"结果</p>
+</div>
+
+<div class="content">
+    <ul class="list">
+	    [listtemp]
+			<li><a href="<?=$bcyd['titleurl']?>"><span>▪ </span><?=$bcyd['title']?></a></li>
+		[/listtemp]
+	</ul>
+  </div>
+</div>
+<div class="page">
+[!--listpage--]
+</div>
+[!--temp.foot--]
+</body>
+</html>

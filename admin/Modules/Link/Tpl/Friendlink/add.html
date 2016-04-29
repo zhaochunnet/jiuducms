@@ -1,0 +1,65 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<div class="pageFormContent" layoutH="57">
+            <p>
+            <label>链接分类：</label>
+            <select name="typeid">
+                <volist name="value" id="vo">
+                <option value="<{$vo.id}>"><{$vo.name}></option>
+                </volist>
+			</select>
+            </p>
+            <p>
+            <label>链接类型：</label>
+            <select name="type" id="type">
+				<option value="0">文字连接</option>
+                <option value="1">图片链接</option>
+			</select>
+            </p>
+			<p>
+				<label>网站名称：</label>
+				<input name="webname" type="text" size="30" alt="请输入网站名称" class="required"/>
+			</p>
+            <p class="img" style="display:none">
+				<label>图片地址：</label>
+				<input name="picurl" id="picurl" type="text"/><a class="button uploadpic" onclick="upload('picurl')" href="javascript:;"><span>选择图片</span></a>
+			</p>
+            <p class="img" style="display:none">
+				<label>图片规格：</label>
+				<input name="pic_width" id="width" type="text" size="4" /> <label style="width:5px;">X</label> <input name="pic_height" id="height" type="text" size="4" /> <label style="width:40px;">(宽X高)</label>
+			</p>
+			<p>
+				<label>链接地址：</label>
+				<input name="weburl" type="text" size="30" class="required url"/>
+			</p>
+            <dl>
+			<dt>备注信息：</dt>
+			<dd><textarea name="linksay" cols="50" rows="2"></textarea></dd>
+			</dl>
+            </div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
+<script language="javascript">
+$(function(){
+	$('#type').change(function(){
+		if($(this).val() == 0){
+			$('.img').css('display','none');
+			$('#picurl').removeClass('required');
+		}else if($(this).val() == 1){
+			$('.img').css('display','inline');
+			$('#picurl').addClass('required');
+		}
+	});
+})
+</script>
+<style type="text/css">
+.uploadpic{margin-left:10px;} 
+</style>

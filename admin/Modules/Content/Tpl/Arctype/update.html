@@ -1,0 +1,161 @@
+<div class="pageContent">
+	<form method="post" name="form1" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<input type="hidden" name="id" value="<{$vo.id}>" />
+		<div class="tabs" currentIndex="0" eventType="click">
+		<div class="tabsHeader">
+			<div class="tabsHeaderContent">
+				<ul>
+					<li><a href="javascript:;"><span>常规选项</span></a></li>
+					<li><a href="javascript:;"><span>高级选项</span></a></li>
+                    <li><a href="javascript:;"><span>栏目内容</span></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="tabsContent">
+			<div>
+            <div class="pageFormContent" layoutH="97">
+            <p>
+				<label>是否启用：</label>
+                <label style="width:40px;"><input name="status" type="radio" value="1" <eq name="vo.status" value="1">checked="checked" </eq> />&nbsp;是</label><label style="width:40px;"><input type="radio" name="status" value="0" <eq name="vo.status" value="0">checked="checked" </eq> />&nbsp;否</label>
+			</p>
+			<p>
+            <label>内容模型：</label>
+            <select name="cid">
+                <volist name="conm" id="c">
+                <option value="<{$c.id}>" <eq name="vo.cid" value="$c['id']">selected="selected" </eq> ><{$c.typename}></option>
+                </volist>
+			</select>
+            </p>
+			<p>
+				<label>栏目名称：</label>
+				<input name="typename" type="text" size="30" id="typename" value="<{$vo.typename}>" alt="请输入栏目名称" class="required"/>
+			</p>
+			<p>
+				<label>栏目图片：</label>
+				<input name="typeimg" id="typeimg" value="<{$vo.typeimg}>" type="text"/><a class="button uploadpic" onclick="upload('typeimg')" href="javascript:;"><span>选择图片</span></a>
+			</p>
+			<p>
+				<label>上级目录：</label>
+				<input name="typedir" type="text" value="<{$vo.typedir}>" class="textInput readonly" size="30" readonly="true"/>
+			</p>
+			<p>
+				<label>文件保存目录：</label>
+				<input name="dirname" type="text" id="dirname" class="required" value="<{$vo.dirname}>" size="20"/>
+				<a class="button pinyin" href="javascript:;"><span>拼音</span></a>
+			</p>
+			<dl>
+			<dt>目录相对位置：</dt>
+			<dd>
+				<label style="width:80px;"><input name="referpath" type="radio" value="0" <eq name="vo.referpath" value="0">checked="checked" </eq>/>&nbsp;上级目录</label>
+                <label style="width:80px;"><input name="referpath" type="radio" value="1" <eq name="vo.referpath" value="1">checked="checked" </eq>/>&nbsp;根目录</label>
+			</dd>
+			</dl>
+			<dl>
+			<dt>栏目属性：</dt>
+			<dd>
+				<label style="width:80px;"><input name="isdefault" type="radio" value="1" <eq name="vo.isdefault" value="1">checked="checked" </eq>/>&nbsp;生成静态</label>
+                <label style="width:80px;"><input name="isdefault" type="radio" value="0" <eq name="vo.isdefault" value="0">checked="checked" </eq>/>&nbsp;动态浏览</label>
+			</dd>
+			</dl>
+			<p>
+				<label>默认页的名称：</label>
+				<input name="defaultname" type="text" size="20" value="<{$vo.defaultname}>" class="required alphanumeric"/>
+			</p>
+            <dl style="height:65px;">
+			<dt>栏目属性：</dt>
+			<dd><label style="width:300px;"><input name="ispart" type="radio" value="1" <eq name="vo.ispart" value="1">checked="checked" </eq>/>频道封面（栏目本身不允许发布文档）</label>
+                <label style="width:400px;"><input name="ispart" type="radio" value="2" <eq name="vo.ispart" value="2">checked="checked" </eq> />最终列表栏目（允许在本栏目发布文档，并生成文档列表） </label>
+                <label style="width:300px;"><input name="ispart" type="radio" value="3" <eq name="vo.ispart" value="3">checked="checked" </eq>/>外部连接（在"外部地址"处填写网址）</label></dd>
+			</dl>
+			<dl>
+			<dt>外部地址：</dt>
+			<dd><input name="typeurl" type="text" size="40" value="<{$vo.typeurl}>"/></dd>
+			</dl>
+            </div>
+			</div>
+			<div>
+            <div class="pageFormContent" layoutH="97">
+			<p>
+				<label>频道模版：</label>
+                <input name="index.temp" type="text" size="30" value="<{$vo.tempindex}>" class="required"/>
+                <a class="btnLook" href="<{:U('Edition/Templets/public_list')}>" width="300" height="350" lookupGroup="index">选择频道模版</a>
+			</p>
+			<p>
+				<label>列表模版：</label>
+				<input name="list.temp" type="text" size="30" value="<{$vo.templist}>" class="required"/>
+                <a class="btnLook" href="<{:U('Edition/Templets/public_list')}>" width="300" height="350" lookupGroup="list" rel="selecttemplets">选择列表模版</a>
+			</p>
+			<p>
+				<label>内容模版：</label>
+				<input name="article.temp" type="text" size="30" value="<{$vo.temparticle}>" class="required"/>
+                <a class="btnLook" href="<{:U('Edition/Templets/public_list')}>" width="300" height="350" lookupGroup="article">选择内容模版</a>
+			</p>
+			<p>
+				<label>列表命名规则：</label>
+				<input name="listrule" type="text" size="30" value="<{$vo.listrule}>" class="required"/>
+			</p>
+			<p>
+				<label>文章命名规则：</label>
+				<input name="arctrule" type="text" size="30" value="<{$vo.arctrule}>" class="required"/>
+			</p>
+			<p>
+				<label>列表每页条数：</label>
+				<input name="listnum" type="text" size="20" value="<{$vo.listnum}>" class="required digits"/>
+			</p>
+			<p>
+				<label>相关链接条数：</label>
+				<input name="linknum" type="text" size="20" value="<{$vo.linknum}>" class="required digits"/>
+			</p>
+			<dl>
+			<dt>栏目关键字：</dt>
+			<dd><input name="keywords" type="text" size="40" value="<{$vo.keywords}>"/></dd>
+			</dl>
+            <dl style="height:47px;">
+			<dt>栏目描述：</dt>
+			<dd><textarea name="description" cols="60" style="height:40px;"><{$vo.description}></textarea></dd>
+			</dl>
+			<dl>
+			<dt>SEO标题：</dt>
+			<dd><input name="seotitle" type="text" size="40" value="<{$vo.seotitle}>"/></dd>
+			</dl>
+			<dl>
+			<dt>继承选项：</dt>
+			<dd><label style="width:370px;"><input name="upnext" type="checkbox" value="1" />同时更改下级栏目的内容模型、模板风格、命名规则等通用属性</label></dd>
+			</dl>
+            </div>
+			</div>
+            <div>
+			<div class="pageFormContent" layoutH="97">
+            说明：栏目内容是单独页的一种方式，可在栏目模板中用<{$field.content}>调用，通常用于企业简介之类的用途。
+				<textarea name="content" id="editor" style="width:100%;height:330px;visibility:hidden;"><{$vo.content}></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="tabsFooter">
+			<div class="tabsFooterContent"></div>
+		</div>
+	</div>
+	<div class="formBar">
+		<ul>
+			<li><div class="buttonActive"><div class="buttonContent"><button type="submit" id="submit">保存</button></div></div></li>
+			<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+		</ul>
+	</div>
+	</form>
+<script type="text/javascript">
+var editor = KindEditor.create('#editor',{
+	uploadJson : '<{:U('Admin/Public/upload')}>',
+	fileManagerJson : '<{:U('Admin/Public/imglist')}>',
+	allowFileManager : true
+});
+$('#submit').click(function(){
+	$('#editor').val(editor.html());
+});
+$('.pinyin').click(function(){
+	url = "<{:U('Public/pinyin')}>&name="+$('#typename').val();
+    $.get(url,function(jsondata){
+		$('#dirname').val(jsondata);
+	})
+});
+</script>
+</div>

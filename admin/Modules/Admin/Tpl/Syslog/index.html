@@ -1,0 +1,61 @@
+<form id="pagerForm" action="__SELF__" method="post">
+	<input type="hidden" name="pageNum" value="<{$page.pageNum}>"/>
+	<input type="hidden" name="numPerPage" value="<{$page.numPerPage}>"/>
+	<input type="hidden" name="_order" value="<{$_REQUEST._order}>"/>
+	<input type="hidden" name="_sort" value="<{$_REQUEST._sort}>"/>
+</form>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&id={sid_user}&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除吗？" warn="请选择信息"><span>删除</span></a></li>
+			<li><a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&navTabId=__MODULE__" target="selectedTodo" rel="id" postType="string" title="你确定要删除选中吗？"><span>删除选中</span></a></li>
+			<li><a class="delete" href="<{:U('__MODULE__/deleteall')}>&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除全部吗？"><span>删除全部</span></a></li>
+			<li><a class="delete" href="<{:U('__MODULE__/emptydata')}>&navTabId=__MODULE__" target="ajaxTodo" title="你确定要ID归零吗？ID归零会删除所有数据"><span>ID归零</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="75" >
+		<thead>
+			<tr>
+            	<th width="20" align="center"><input type="checkbox" class="checkboxCtrl" group="id"/></th>
+				<th width="40" align="center">ID</th>
+				<th width="70" align="center">操作分组</th>
+                <th width="70" align="center">操作模块</th>
+                <th width="50" align="center">操作对象</th>
+				<th width="30" align="center">备注</th>
+                <th width="50" align="center">操作用户</th>
+                <th width="50" align="center">操作用户ID</th>
+                <th width="60" align="center">操作IP</th>
+				<th width="70" align="center">操作时间</th>
+			</tr>
+		</thead>
+		<tbody>
+        	<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo.id}>">
+				<td><input type="checkbox" name="id" value="<{$vo.id}>" /></td>
+                <td><{$vo.id}></td>
+				<td><{$vo.appname}></td>
+                <td><{$vo.modulename}></td>
+                <td><{$vo.actionname}></td>
+                <td><{$vo.message}></td>
+                <td><{$vo.username}></td>
+                <td><{$vo.userid}></td>
+				<td><{$vo.userip}></td>
+				<td><{$vo.time|date="Y-m-d H:i:s",###}></td>
+			</tr>
+            </volist>
+		</tbody>
+	</table>
+	<div class="panelBar">
+		<div class="pages">
+			<span>显示</span>
+			<select class="combox" name="numPerPage" onchange="navTabPageBreak({numPerPage:this.value})">
+				<option value="20" <eq name="page.numPerPage" value="20">selected</eq> >20</option>
+				<option value="40" <eq name="page.numPerPage" value="40">selected</eq>>40</option>
+				<option value="80" <eq name="page.numPerPage" value="80">selected</eq>>80</option>
+				<option value="100" <eq name="page.numPerPage" value="100">selected</eq>>100</option>
+			</select>
+			<span>共<{$page.totalCount}>条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="<{$page.totalCount}>" numPerPage="<{$page.numPerPage}>" pageNumShown="10" currentPage="<{$page.pageNum}>"></div>
+	</div>
+</div>

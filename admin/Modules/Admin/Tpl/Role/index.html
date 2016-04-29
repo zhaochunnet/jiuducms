@@ -1,0 +1,40 @@
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="<{:U('__MODULE__/add')}>" target="dialog" mask="true"><span>新增</span></a></li>
+			<li><a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&id={sid_user}&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除吗？" warn="请选择用户"><span>删除</span></a></li>
+			<li><a class="edit" href="<{:U('__MODULE__/update')}>&id={sid_user}" target="dialog" mask="true" warn="请选择用户"><span>编辑</span></a></li>
+			<li class="line">line</li>
+		</ul>
+	</div>
+
+	<table class="table" width="100%" layoutH="75">
+		<thead>
+		<tr>
+			<th width="40" align="center">编号</th>
+			<th width="100" align="center" orderField="account" <if condition="$_REQUEST._order eq 'account'">class="<{$_REQUEST._sort}>"</if>>组名</th>
+            <th width="300" align="center">描述</th>
+            <th width="200" align="center">操作</th>
+			<th align="center" width="80" orderField="status" <if condition="$_REQUEST._order eq 'status'">class="<{$_REQUEST._sort}>"</if>>状态</th>
+		</tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo['id']}>">
+				<td><{$vo['id']}></td>
+				<td><{$vo['name']}></td>
+                <td><{$vo['remark']}></td>
+                <td><eq name="vo.id" value="1"><span style="color:#999">编辑权限</span> | <a href="<{:U('User/index')}>&role_id=<{$vo.id}>" target="navTab" rel="User">成员管理</a> | <span style="color:#999">修改</span> | <span style="color:#999">删除</span><else/><a href="<{:U('__MODULE__/privilege')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="dialog" mask="true" width="740" height="500">编辑权限</a> | <a href="<{:U('User/index')}>&role_id=<{$vo.id}>" target="navTab" rel="User">成员管理</a> | <a href="<{:U('__MODULE__/update')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="dialog" mask="true">修改</a> | <a href="<{:U('__MODULE__/foreverdelete')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo">删除</a></eq></td>
+				<td>
+				<eq name="vo.id" value="1">
+				<span><img src="Public/Images/locked.gif" width="20" height="20" /></span>
+				<else/>
+				<eq name="vo.status" value="1"><a href="<{:U('__MODULE__/forbid')}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要禁用此用户组?"><img src="Public/Images/ok.gif" width="20" height="20" /></a><else/><a href="<{:U('__MODULE__/resume')}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要启用此用户组?"><img src="Public/Images/error.gif" width="20" height="20" /></a></eq>
+				</eq>
+				</td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+	<div class="panelBar"></div>
+</div>

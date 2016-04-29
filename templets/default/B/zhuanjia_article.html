@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/vnd.wap.xhtml+xml;charset=utf-8" />
+<meta content="max-age=1700" http-equiv="Cache-control">
+<meta name="viewport" content = "width=device-width; initial-scale=1.0;  minimum-scale=1.0; maximum-scale=no" />
+<meta content="telephone=no" name="format-detection">
+<title><{$field.typename}> - <{$global.jiudu_webname}></title>
+<meta name="description" content="<{$global.jiudu_description}>" />
+<meta name="keywords" content="<{$global.jiudu_keywords}>" />
+<link rel="stylesheet" href="<{$global.tempdir}>/css/basic.css" type="text/css" />
+<link rel="stylesheet" id="skin" href="<{$global.tempdir}>/css/skin.css" type="text/css" />
+</head>
+<body>
+<include file="head.html" />
+<div class="crumb">
+	<p><{$newsnav}></p>
+</div>
+<div class="content">
+	<jiudu:arclist typeid='14078' row='44' orderby='pubdate desc'>
+	<div class="expert-img">
+	    <div class="expertCon"><a href="<{$jiudu.titleurl}>"><img src="<{$jiudu.litpic}>" width="82" height="90"></a></div>
+	    <p class="peo"><a class="peoTxt" href="<{$jiudu.titleurl}>"><{$jiudu.title}></a><p>
+	    <p><a href="<{$jiudu.titleurl}>"><{$jiudu.description|esub='30'}>...<span>[详细]</span></a></p>
+	</div>
+	</jiudu:arclist>
+	<jiudu:arclist typeid='14079' row='44' orderby='pubdate desc'>
+	<div class="expert-img">
+	    <div class="expertCon"><a href="<{$jiudu.titleurl}>"><img src="<{$jiudu.litpic}>" width="82" height="90"></a></div>
+	    <p class="peo"><a class="peoTxt" href="<{$jiudu.titleurl}>"><{$jiudu.title}></a><p>
+	    <p><a href="<{$jiudu.titleurl}>"><{$jiudu.description|esub='30'}>...<span>[详细]</span></a></p>
+	</div>
+	</jiudu:arclist>
+	<jiudu:arclist typeid='14080' row='44' orderby='pubdate desc'>
+	<div class="expert-img">
+	    <div class="expertCon"><a href="<{$jiudu.titleurl}>"><img src="<{$jiudu.litpic}>" width="82" height="90"></a></div>
+	    <p class="peo"><a class="peoTxt" href="<{$jiudu.titleurl}>"><{$jiudu.title}></a><p>
+	    <p><a href="<{$jiudu.titleurl}>"><{$jiudu.description|esub='30'}>...<span>[详细]</span></a></p>
+	</div>
+	</jiudu:arclist>
+</div>
+<include file="foot.html" />
+</body>
+</html>

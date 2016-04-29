@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title><{$global.jiudu_webname}>-演示站点</title>
+<meta name="description" content="<{$global.jiudu_description}>" />
+<meta name="keywords" content="<{$global.jiudu_keywords}>" />
+<meta name="generator" content="JiuduCMS 1.5.0" />
+<link href="favicon.ico" rel="shortcut icon" />
+<link rel="stylesheet" type="text/css" href="/static/web/style/metinfo_ui.css" />
+<link rel="stylesheet" type="text/css" href="/static/web/style/metinfo.css" />
+<script src="/static/web/js/jQuery1.7.2.js" type="text/javascript"></script>
+<script src="/static/web/js/metinfo_ui.js" type="text/javascript"></script>
+<script src="/static/web/js/ch.js" type="text/javascript"></script>
+<!--[if IE]>
+<script src="/static/web/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+</head>
+<body>
+<include file="head.html" />
+<div class="inner met_flash">
+	<div class="flash"> 
+		<script type="text/javascript">
+var swf_width=980;
+var swf_height=245;
+var files='/static/web/images/1388116589.jpg|/static/web/images/1388046356.jpg';
+var links='|http://www.jiuducms.com';
+var texts='';
+var swfpath = '/static/web/images/flash02.swf';
+var AutoPlayTime=6; //间隔时间：单位是秒
+document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ swf_width +'" height="'+ swf_height +'">');
+document.write('<param name="movie" value='+swfpath+'><param name="quality" value="high">');
+document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+document.write('<param name="FlashVars" value="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'&AutoPlayTime='+AutoPlayTime+'">');
+document.write('<embed src='+swfpath+' wmode="opaque" FlashVars="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'&AutoPlayTime='+AutoPlayTime+'" menu="false" quality="high" width="'+ swf_width +'" height="'+ swf_height +'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />'); 
+document.write('</object>'); 
+</script> 
+	</div>
+</div>
+<div class="index inner">
+	<div class="aboutus style-1">
+		<h3 class="title"> <span class='myCorner' data-corner='top 5px'><jiudu:typename id='1'/></span> <a href="<jiudu:typeurl id='1'/>" class="more">更多>></a> </h3>
+		<div class="active editor clear contour-1">
+			<div><img src="<jiudu:type name="typeimg" id='1'/>" style="line-height: 2; margin:8px; width:196px; float:left; height: 175px;" /></div>
+			<div style="font-size:14px;"><jiudu:type name="description" id='1'/></div>
+			<div>&nbsp;</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="case style-2">
+		<h3 class='title myCorner' data-corner='top 5px'><jiudu:typename id='6'/><a href="<jiudu:typeurl id='6'/>" class="more">更多>></a></h3>
+		<div class="active clear listel contour-1">
+			<ol class='list-none metlist'>
+				<jiudu:arclist typeid='6' row='7' orderby='pubdate desc'>
+				<li class='list'><span class='time'><{$jiudu.pubdate|date="Y-m-d",###}></span><a href="<{$jiudu.titleurl}>" title='<{$jiudu.title}>' target='_blank'><{$jiudu.title}></a></li>
+				</jiudu:arclist>
+			</ol>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div class="index-news style-1">
+		<h3 class="title"> <span class='myCorner' data-corner='top 5px'><jiudu:typename id='8'/></span> <a href="<jiudu:typeurl id='8'/>" class="more">更多>></a> </h3>
+		<div class="active clear listel contour-2">
+			<ol class='list-none metlist'>
+				<jiudu:arclist typeid='8' row='5' orderby='pubdate desc'>
+				<li class='list'><span class='time'><{$jiudu.pubdate|date="Y-m-d",###}></span><a href="<{$jiudu.titleurl}>" title='<{$jiudu.title}>' target='_blank'><{$jiudu.title}></a></li>
+				</jiudu:arclist>
+			</ol>
+		</div>
+	</div>
+	<div class="index-news style-1">
+		<h3 class="title"> <span class='myCorner' data-corner='top 5px'><jiudu:typename id='9'/></span> <a href="<jiudu:typeurl id='9'/>" class="more">更多>></a> </h3>
+		<div class="active clear listel contour-2">
+			<ol class='list-none metlist'>
+				<jiudu:arclist typeid='9' row='5' orderby='pubdate desc'>
+				<li class='list'><span class='time'><{$jiudu.pubdate|date="Y-m-d",###}></span><a href="<{$jiudu.titleurl}>" title='<{$jiudu.title}>' target='_blank'><{$jiudu.title}></a></li>
+				</jiudu:arclist>
+			</ol>
+		</div>
+	</div>
+	<div class="index-conts style-2">
+		<h3 class='title myCorner' data-corner='top 5px'><jiudu:typename id='4'/><a href="<jiudu:typeurl id='4'/>" class="more">更多>></a></h3>
+		<div class="active clear listel contour-2">
+			<ol class='list-none metlist'>
+				<jiudu:arclist typeid='4' row='5' orderby='pubdate desc'>
+				<li class='list'><span class='time'><{$jiudu.pubdate|date="Y-m-d",###}></span><a href="<{$jiudu.titleurl}>" title='<{$jiudu.title}>' target='_blank'><{$jiudu.title}></a></li>
+				</jiudu:arclist>
+			</ol>
+		</div>
+	</div>
+	<div class="clear p-line"></div>
+	<div class="index-product style-2">
+		<h3 class='title myCorner' data-corner='top 5px'> <span><jiudu:typename id='3'/></span>
+			<div class="flip">
+				<p id="trigger"></p>
+				<a class="prev" id="car_prev" href="javascript:void(0);"></a> <a class="next" id="car_next" href="javascript:void(0);"></a> </div>
+			<a href="<jiudu:typeurl id='3'/>" class="more">更多>></a> </h3>
+		<div class="active clear">
+			<div class="profld" id="indexcar" data-listnum="5">
+				<ol class='list-none metlist'>
+					<jiudu:arclist typeid='3' row='10' flag="p" orderby='pubdate desc'>
+					<li class='list'><a href='<{$jiudu.titleurl}>' title='<{$jiudu.title}>' target='_blank' class='img'><img src='<{$jiudu.litpic}>' alt='<{$jiudu.title}>' title='<{$jiudu.title}>' width='160' height='120' /></a></li>
+					</jiudu:arclist>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div class="index-links">
+		<h3 class="title">友情链接</h3>
+		<div class="active clear">
+			<div class="img">
+				<ul class='list-none'>
+					<jiudu:flink type="image" row="20">
+					<li><a href='<{$jiudu.weburl}>' target='_blank'><img src='<{$jiudu.picurl}>' alt='<{$jiudu.webname}>' /></a></li>
+					</jiudu:flink>
+				</ul>
+			</div>
+			<div class="txt">
+				<ul class='list-none'>
+					<jiudu:flink type="text" row="20">
+					<li><a href='<{$jiudu.weburl}>' target='_blank' title='<{$jiudu.webname}>'><{$jiudu.webname}></a></li>
+					</jiudu:flink>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<include file="foot.html"/>
+</body>
+</html>

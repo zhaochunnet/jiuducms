@@ -1,0 +1,19 @@
+<header>
+	<div class="inner">
+		<div class="top-logo"> <a href="<{$global.jiudu_basehost}>" title="<{$global.jiudu_webname}>" id="web_logo"> <img src="/static/web/images/logo.png" alt="<{$global.jiudu_webname}>" title="<{$global.jiudu_webname}>" style="margin:20px 0px 0px 0px;" /> </a>
+			<ul class="top-nav list-none">
+				<li class="t"><a href='#' onclick='SetHome(this,window.location,"非IE浏览器不支持此功能，请手动设置！");' style='cursor:pointer;' title='设为首页'  >设为首页</a><span>|</span><a href='#' onclick='addFavorite("非IE浏览器不支持此功能，请手动设置！");' style='cursor:pointer;' title='收藏本站'  >收藏本站</a><span>|</span><a class="fontswitch" id="StranLink" href="javascript:StranBody()">繁体中文</a><span>|</span><a href='<{$global.jiudu_basehost}>/Wap/' title='WAP'>WAP版演示</a></li>
+				<li class="b"><span style="font-size:28px;"><a href="<{$global.jiudu_basehost}>/admin/"><span style="color: rgb(255, 0, 0); ">网 站 后 台</span></a></span></li>
+			</ul>
+		</div>
+		<nav>
+			<ul class="list-none">
+				<li style='width:120px; border-top-left-radius:5px;'><a href='<{$global.jiudu_indexurl}>' title='网站首页' class='nav'><span>网站首页</span></a></li>
+				<jiudu:channel type="top" row="10"> 
+				<li class="line"></li>
+				<li <eq name='key' value='6'>style="width:120px; border-top-right-radius:5px;"<else/>style='width:121px;'</eq>><a href='<{$jiudu.typeurl}>' title='<{$jiudu.typename}>'><span><{$jiudu.typename}></span></a></li>
+				</jiudu:channel> 
+			</ul>
+		</nav>
+	</div>
+</header>

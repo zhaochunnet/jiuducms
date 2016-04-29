@@ -1,0 +1,57 @@
+<div class="pageContent">
+	<div class="panel" minH="50">
+		<h1>版本管理说明</h1>
+		<div>
+			<p>配置的相关参数在 【系统基本设置 -> 版本设置】中调整</p><p><br/></p>
+			<p>
+				<label>如果开启了“<span style="color:red">自定义跳转代码位置</span>”电脑版需要添加的代码：</label>
+				<input type="text" style="width:150px;" readonly="true" value="<{$pccode}>"/>
+			</p>
+		</div>
+	</div>
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="<{:U('__MODULE__/add')}>" target="dialog" rel="add" mask="true" width="520" height="350"><span>新增</span></a></li>
+			<li><a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&id={sid_user}&navTabId=__MODULE__" target="ajaxTodo" title="确定要删除该版本吗？删除后该版本对应模板也将会删除，请做好备份" warn="请选择版本"><span>删除</span></a></li>
+			<li><a class="edit" href="<{:U('__MODULE__/update')}>&id={sid_user}" target="dialog" rel="edit" mask="true" width="520" height="350" warn="请选择版本"><span>编辑</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="174" >
+		<thead>
+			<tr>
+				<th width="80" align="center">版本名称</th>
+				<th width="60" align="center">版本标识符</th>
+                <th width="60" align="center">默认版本</th>
+                <th width="100" align="center">备注信息</th>
+				<th width="40" align="center">状态</th>
+                <th width="80" align="center">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+        	<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo.id}>">
+                <td><{$vo.name}></td>
+                <td><{$vo.udid}></td>
+                <td><eq name="vo.isdefault" value="1"><img src="Public/Images/ok.gif" width="20" height="20" /><else/><a href="<{:U('__MODULE__/setdefault')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要设为默认模版吗?"><img src="Public/Images/error.gif" width="20" height="20" /></a></eq></td>
+                <td><{$vo.remark}></td>
+				<td align="center">
+				<if condition="$vo.isdefault eq 1">
+					<img src="Public/Images/locked.gif" width="20" height="20" title="默认版本不可以禁用?" />
+				<else />
+					<eq name="vo.status" value="1"><a href="<{:U('__MODULE__/forbid')}>&navTabId=__MODULE__&id=<{$vo['id']}>" target="ajaxTodo" title="确定要禁用此版本?"><img src="Public/Images/ok.gif" width="20" height="20" /></a><else/><a href="<{:U('__MODULE__/resume')}>&navTabId=__MODULE__&id=<{$vo['id']}>" target="ajaxTodo" title="确定要启用此版本?"><img src="Public/Images/error.gif" width="20" height="20" /></a></eq>
+				</if>
+				</td>
+				<td>
+					<a href="<{:U('__MODULE__/update')}>&id=<{$vo.id}>" target="dialog" rel="edit" mask="true" width="520" height="350">修改</a> | 
+					<if condition="$vo.isdefault eq 1">
+					<span style="color:#999">删除</span>
+					<else />
+					<a href="<{:U('__MODULE__/foreverdelete')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要删除该版本吗？删除后该版本对应模板也将会删除，请做好备份">删除</a>
+					</if>
+				</td>
+			</tr>
+            </volist>
+		</tbody>
+	</table>
+	<div class="panelBar"></div>
+</div>

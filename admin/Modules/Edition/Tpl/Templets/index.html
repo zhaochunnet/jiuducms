@@ -1,0 +1,57 @@
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="<{:U('__MODULE__/add')}>&path=<{$Think.get.path}>" target="navTab" rel="add"><span>新增模版</span></a></li>
+			<li><a class="edit" href="<{:U('__MODULE__/index')}>&path=<{$uparr}>" target="navTab" rel="__MODULE__" title="模板列表/<{$uparr}>"><span>上级目录</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="75" >
+		<thead>
+			<tr>
+				<th width="20" align="center"></th>
+				<th width="200" align="center">文件名</th>
+				<th align="center">文件描述</th>
+				<th width="200" align="center">修改时间</th>
+                <th width="200" align="center">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+        	<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo.fileurl}>">
+				<td></td>
+                <td style="text-align:left;"><p style="padding-left:23px; background:url(
+				<if condition="$vo.type eq 'file'">Public/Images/<{$vo.ext}>.gif
+				<elseif condition="$vo.type eq 'dir'"/>
+				Public/Images/dir.gif
+				</if>
+				) no-repeat 3px 3px;">
+				<if condition="$vo.type eq 'dir'">
+				<a href="<{:U('__MODULE__/index')}>&path=<{$vo.fileurl}>" target="navTab" title="模板列表/<{$vo.fileurl}>" rel="__MODULE__"><{$vo.filename}></a>
+				<elseif condition="($vo.ext eq 'html') OR ($vo.ext eq 'css') OR ($vo.ext eq 'js')"/>
+				<a href="<{:U('__MODULE__/update')}>&path=<{$vo.fileurl}>&name=<{$vo.filename}>" title="编辑<{$vo.filename}>" target="navTab" rel="__MODULE__update<{$vo.fileurl}>"><{$vo.filename}></a>
+				<else/>
+				<span style="line-height: 21px;"><{$vo.filename}></span>
+				</if>
+				</p></td>
+                <td><{$vo['name']|default="未知模版"}></td>
+				<td><{$vo.mtime|date="Y-m-d H:i:s",###}></td>
+				<td>
+				<if condition="$vo.type eq 'dir'">
+				<a href="<{:U('__MODULE__/index')}>&path=<{$vo.fileurl}>" title="模板列表/<{$vo.fileurl}>" target="navTab" rel="__MODULE__" >打开</a> | 
+				<elseif condition="($vo.ext eq 'html') OR ($vo.ext eq 'css') OR ($vo.ext eq 'js')"/>
+				<a href="<{:U('__MODULE__/update')}>&path=<{$vo.fileurl}>&name=<{$vo.filename}>" title="编辑<{$vo.filename}>" target="navTab" rel="__MODULE__update<{$vo.fileurl}>">编辑</a> | 
+				<elseif condition="($vo.ext eq 'jpg') OR ($vo.ext eq 'png') OR ($vo.ext eq 'gif')"/>
+				<a href="/<{$vo.fileurl}>" title="预览<{$vo.filename}>" target="_blank">预览</a>
+				</if>
+				<if condition="($vo.name eq '')">
+				<a href="<{:U('__MODULE__/foreverdelete')}>&path=<{$vo.fileurl}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要删除“<{$vo.filename}>”吗?">删除</a></td>
+				<else/>
+				不可删除
+				</if>
+				</td>
+			</tr>
+            </volist>
+		</tbody>
+	</table>
+	<div class="panelBar"></div>
+</div>

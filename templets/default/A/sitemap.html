@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>网站地图 - <{$index.webname}></title>
+<meta name="keywords" content="网站地图,<{$index.webname}>">
+<meta name="generator" content="SiteMap Generator">
+<meta name="author" content="struggle.Name">
+<meta name="copyright" content="jiuducms.Name">
+<style type="text/css">
+	body {font-family: Verdana;FONT-SIZE: 12px;MARGIN: 0;color: #000000;background: #ffffff;}
+	img {border:0;}
+	li {margin-top: 8px;}
+	.page {padding: 4px; border-top: 1px #EEEEEE solid}
+	.author {background-color:#EEEEFF; padding: 6px; border-top: 1px #ddddee solid}
+	#nav, #content, #footer {padding: 8px; border: 1px solid #EEEEEE; clear: both; width: 95%; margin: auto; margin-top: 10px;}
+</style>
+<style type="text/css"></style></head>
+<body vlink="#333333" link="#333333">
+<h2 style="text-align: center; margin-top: 20px"><{$index.webname}> SiteMap </h2>
+<center></center>
+<div id="nav"><a href="<{$index.url}>"><strong><{$index.webname}></strong></a>  » <a href="<{$index.sitemapurl}>">站点地图</a></div>
+<div id="content">
+<h3>最新文章</h3>
+<ul>
+<volist name="archives" empty="没有内容" id="vo">
+<li><a href="<{$vo.titleurl}>" title="<{$vo.title}>" target="_blank"><{$vo.title}></a></li>
+</volist>
+</ul>
+</div>
+<div id="content">
+<li class="categories">栏目目录<ul>
+<volist name="arctype" empty="没有内容" id="vo">
+<li><a href="<{$vo.typeurl}>" title="<{$vo.typename}>" target="_blank"><{$vo.typename}></a></li>
+</volist>
+</ul></li>
+</div>
+
+<div id="footer">查看网站首页: <strong><a href="<{$index.url}>"><{$index.webname}></a></strong></div><br>
+<center>
+<div style="text-algin: center; font-size: 11px"><strong><a href="<{$index.sitemapurl}>" target="_blank">SiteMap</a></strong> &nbsp;
+Latest Update: <php>echo date('Y-m-d H:i:s',time());</php><br><br></div>
+</center>
+<center>
+<div style="text-algin: center; font-size: 11px">
+© 20011-<php>echo date('Y',time());</php> <a href="<{$index.url}>" target="_blank" title="<{$index.webname}>"><{$index.webname}></a><br><br></div>
+</center>
+<div>
+<object id="ClCache" click="sendMsg" host="" width="0" height="0"></object>
+</div>
+</body>
+</html>

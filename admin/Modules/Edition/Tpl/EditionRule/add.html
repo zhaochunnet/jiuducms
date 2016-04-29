@@ -1,0 +1,46 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<div class="pageFormContent" layoutH="57">
+			<p>
+				<label>规则名称：</label>
+				<input name="name" type="text" size="30" alt="请输入规则名称" class="required"/>
+			</p>
+			<p>
+				<label>规则类型：</label>
+				<select name="tid">
+					<volist id="vo" name="type">
+                	<option value="<{$vo.id}>"><{$vo.name}></option>
+                    </volist>
+                </select>
+			</p>
+			<div class="unit">
+				<label>规则内容：</label>
+				<textarea name="device" rows="3" cols="57"></textarea>
+			</div>
+			<p>
+				<label>对应版本：</label>
+				<select name="eid" class="required">
+					<option value="">请选择对应版本</option>
+					<volist id="vo" name="edition">
+                	<option value="<{$vo.id}>"><{$vo.name}></option>
+					</volist>
+				</select>
+			</p>
+			<p>
+				<label>状态：</label>
+				<label style="width:60px;"><input type="radio" name="status" value="1" checked="checked"/>启用</label>
+				<label style="width:60px;"><input type="radio" name="status" value="0" />禁用</label>
+			</p>
+            <div class="unit">
+				<label>备注：</label>
+				<textarea name="remark" rows="3" cols="57"></textarea>
+			</div>
+        </div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

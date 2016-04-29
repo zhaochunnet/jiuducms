@@ -1,0 +1,47 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+	<input name="id" type="hidden" value="<{$vo.id}>"/>
+		<div class="pageFormContent" layoutH="57">
+			<p>
+				<label>规则名称：</label>
+				<input name="name" type="text" size="30" alt="请输入规则名称" class="required" value="<{$vo.name}>"/>
+			</p>
+			<p>
+				<label>规则类型：</label>
+				<select name="tid">
+					<volist id="v" name="type">
+                	<option value="<{$v.id}>" <eq name="vo.tid" value="$v.id">selected="selected"</eq>><{$v.name}></option>
+                    </volist>
+                </select>
+			</p>
+			<div class="unit">
+				<label>规则内容：</label>
+				<textarea name="device" rows="3" cols="57"><{$vo.device}></textarea>
+			</div>
+			<p>
+				<label>对应版本：</label>
+				<select name="eid" class="required">
+					<option value="">请选择对应版本</option>
+					<volist id="v" name="edition">
+                	<option <eq name="vo.eid" value="$v.id">selected="selected"</eq> value="<{$v.id}>"><{$v.name}></option>
+					</volist>
+				</select>
+			</p>
+			<p>
+				<label>状态：</label>
+				<label style="width:60px;"><input type="radio" name="status" value="1" <eq name="vo.status" value="1">checked="checked"</eq>/>启用</label>
+				<label style="width:60px;"><input type="radio" name="status" value="0" <eq name="vo.status" value="0">checked="checked"</eq>/>禁用</label>
+			</p>
+            <div class="unit">
+				<label>备注：</label>
+				<textarea name="remark" rows="3" cols="57"><{$vo.remark}></textarea>
+			</div>
+        </div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

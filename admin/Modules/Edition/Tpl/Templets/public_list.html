@@ -1,0 +1,49 @@
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="edit" href="<{:U('__MODULE__/public_list')}>&path=<{$uparr}>"  target="dialog" mask="true" title="模板列表/<{$uparr}>"><span>上级目录</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="85" >
+		<thead>
+			<tr>
+				<th width="30" align="left">文件名</th>
+				<th width="20" align="left">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+        	<volist id="vo" name="list">
+			<tr target="sid_user">
+                <td>
+				<p style="padding-left:23px; background:url(
+				<if condition="$vo.type eq 'file'">Public/Images/<{$vo.ext}>.gif
+				<elseif condition="$vo.type eq 'dir'"/>
+				Public/Images/dir.gif
+				</if>
+				) no-repeat 3px 3px;">
+				<if condition="$vo.type eq 'dir'">
+				<a href="<{:U('__MODULE__/public_list')}>&path=<{$vo.fileurl}>&name=<{$name}>" title="模板列表/<{$vo.fileurl}>" target="dialog" mask="true"><{$vo.filename}></a>
+				<elseif condition="($vo.ext eq 'html') OR ($vo.ext eq 'htm')"/>
+				<a href="javascript:" onclick="$.bringBack({temp:'<{$vo.fileurl|urldecode}>'})"><{$vo.filename}></a>
+				<else/>
+				<span style="line-height: 21px;"><{$vo.filename}></span>
+				</if>
+				</p>
+				</td>
+                <td>
+				<if condition="$vo.type eq 'dir'">
+				<a href="<{:U('__MODULE__/index')}>&path=<{$vo.fileurl}>" title="模板列表/<{$vo.fileurl}>" target="navTab" rel="__MODULE__" >打开</a> 
+				<elseif condition="($vo.ext eq 'html') OR ($vo.ext eq 'htm')"/>
+				<a href="javascript:" onclick="$.bringBack({temp:'<{$vo.fileurl|urldecode}>'})">选择</a>
+				</if>
+				</td>
+			</tr>
+            </volist>
+		</tbody>
+	</table>
+	<div class="formBar">
+		<ul>
+			<li><div class="button"><div class="buttonContent"><button class="close" type="button">关闭</button></div></div></li>
+		</ul>
+	</div>
+</div>

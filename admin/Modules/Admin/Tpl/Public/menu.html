@@ -1,0 +1,27 @@
+<div class="accordion" fillSpace="sideBar">
+	<volist name="menu" id="vo">
+	<div class="accordionHeader">
+		<h2><span>Folder</span><{$vo.name}></h2>
+	</div>
+	<if condition="$vo.con">
+	<div class="accordionContent">
+		<ul class="tree treeFolder">
+			<volist name="vo.con" id="vo1">
+			<eq name="vo1.type" value="1"><li><a><{$vo1.name}></a>
+				<if condition="$vo1.con">
+				<ul>
+					<volist name="vo1.con" id="vo2">
+					<li><a href="<eq name="vo2.url" value="">index.php?g=<{$vo2.group}>&m=<{$vo2.model}>&a=<{$vo2.action}><else/><{$vo2.url}></eq>" target="<{$vo2.target}>" rel="<{$vo2.rel}>"><{$vo2.name}></a></li>
+					</volist>
+				</ul>
+				</if>
+				</li>
+			<else/>
+				<li><a href="<eq name="vo1.url" value="">index.php?g=<{$vo1.group}>&m=<{$vo1.model}>&a=<{$vo1.action}><else/><{$vo1.url}></eq>" target="<{$vo1.target}>" rel="<{$vo1.rel}>"><{$vo1.name}></a></li>
+			</eq>
+			</volist>				
+		</ul>
+	</div>
+	</if>
+	</volist>
+</div>

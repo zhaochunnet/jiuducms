@@ -1,0 +1,32 @@
+<div class="pageContent">
+	<div class="panelBar"></div>
+	<table class="table" width="100%" layoutH="75" >
+		<thead>
+			<tr>
+				<th width="10" align="center"></th>
+				<th width="80" align="center">管理员↓|统计信息→</th>
+				<th width="60" align="center">全部(文档|点击)</th>
+                <th width="50" align="center">季度</th>
+                <th width="50" align="center">当月</th>
+				<th width="50" align="center">一周内</th>
+				<th width="50" align="center">近三天</th>
+                <th width="50" align="center">24小时内</th>
+			</tr>
+		</thead>
+		<tbody>
+        	<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo.id}>">
+				<td></td>
+                <td><{$vo.nickname}></td>
+                <td><{$vo.numall}> | <{$vo.clickall}></td>
+                <td><{$vo.num_j}> | <{$vo.click_j}></td>
+                <td><{$vo.num_m}> | <{$vo.click_m}></td>
+				<td><{$vo.num_w}> | <{$vo.click_w}></td>
+                <td><{$vo.num_s}> | <{$vo.click_s}></td>
+				<td><{$vo.num_d}> | <{$vo.click_d}></td>
+			</tr>
+            </volist>
+		</tbody>
+	</table>
+	<div class="panelBar"></div>
+</div>

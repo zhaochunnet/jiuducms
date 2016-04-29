@@ -1,0 +1,20 @@
+<div class="pageContent">
+	<form method="post" action="<{:U('__MODULE__/backupdo')}>" target="_blank" class="pageForm required-validate">
+		<div class="pageFormContent" layoutH="57">
+            <dl class="nowrap">
+			<dt>选择表：<br/><label><input type="checkbox" class="checkboxCtrl" checked="checked" group="table[]"/> 全选</label></dt>
+			<dd style="width:385px;"><volist id="vo" name="list">
+			<label style="width:180px;"><input type="checkbox" name="table[]" checked="checked" value="<{$vo.Tables}>"><{$vo.Tables}></label>
+			</volist></dd>
+			</dl>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,45 @@
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="<{:U('__MODULE__/add')}>" target="dialog" rel="add" mask="true" width="600" height="400"><span>新增</span></a></li>
+			<li><a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&id={sid_user}&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除吗？" warn="请选择广告"><span>删除</span></a></li>
+			<li><a class="edit" href="<{:U('__MODULE__/update')}>&id={sid_user}&navTabId=__MODULE__" target="dialog" rel="update" mask="true" width="600" height="400" warn="请选择广告"><span>编辑</span></a></li>
+		</ul>
+	</div>
+
+	<table class="table" width="100%" layoutH="75" >
+		<thead>
+			<tr>
+				<th width="20" align="center"></th>
+				<th width="100" align="center">广告名称</th>
+				<th width="30" align="center">广告类型</th>
+				<th width="30" align="center">广告分类</th>
+                <th width="60" align="center">过期时间</th>
+                <th width="60" align="center">JS调用</th>
+				<th width="60" align="center">标签调用</th>
+                <th width="20" align="center">点击数</th>
+                <th width="80" align="center">备注</th>
+                <th width="70" align="center">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+        	<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo.id}>">
+				<td><input type="checkbox" name="c1[]" value="<{$vo.id}>" /></td>
+                <td><{$vo.title}></td>
+                <td><{$type[$vo['type']]}></td>
+				<td><{$vo.name}></td>
+                <td><neq name="vo.endtime" value="0"><{$vo.endtime|date="Y-m-d",###}><else/>永不过期</neq></td>
+                <td><input type="text" style="width:110px; margin:0px; text-align:center" value='<jiudu:adjs id="<{$vo.id}>"/>' /></td>
+				<td><input type="text" style="width:100px; margin:0px; text-align:center" value='<jiudu:ad id="<{$vo.id}>"/>' /></td>
+                <td><{$vo.onclick}></td>
+                <td><{$vo.remark}></td>
+				<td><a href="<{:U('__MODULE__/make')}>&id=<{$vo.id}>" target="ajaxTodo">生成</a> | <a href="<{:U('__MODULE__/preview')}>&id=<{$vo.id}>" target="dialog" rel="preview">预览</a> | <a href="<{:U('__MODULE__/update')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="dialog" rel="edit" mask="true" width="600" height="400">修改</a> | <a href="<{:U('__MODULE__/foreverdelete')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要删除吗?">删除</a></td>
+			</tr>
+            </volist>
+		</tbody>
+	</table>
+	<div class="panelBar"></div>
+</div>
+
+

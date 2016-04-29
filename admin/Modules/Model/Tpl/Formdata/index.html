@@ -1,0 +1,48 @@
+<form id="pagerForm" action="__SELF__" method="post">
+	<input type="hidden" name="pageNum" value="<{$page.pageNum}>"/>
+	<input type="hidden" name="numPerPage" value="<{$page.numPerPage}>"/>
+	<input type="hidden" name="_order" value="<{$_REQUEST._order}>"/>
+	<input type="hidden" name="_sort" value="<{$_REQUEST._sort}>"/>
+</form>
+<div class="pageContent">
+	<div class="panelBar"></div>
+	<table class="table" width="100%" layoutH="75" >
+		<thead>
+			<tr>
+				<foreach name="field" item="vo">
+				<th width="100" align="center" orderField="<{$key}>" <if condition="$_REQUEST._order eq $key">class="<{$_REQUEST._sort}>"</if>><{$vo}></th>
+				</foreach>
+				<th width="70" align="center" orderField="create_time" <if condition="$_REQUEST._order eq 'create_time'">class="<{$_REQUEST._sort}>"</if>>提交时间</th>
+				<th width="50" align="center" orderField="status" <if condition="$_REQUEST._order eq 'status'">class="<{$_REQUEST._sort}>"</if>>审核</th>
+                <th width="70" align="center">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+        	<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo.id}>">
+				<foreach name="field" key="key" item="v">
+				<td><{$vo[$key]}></td>
+                </foreach>
+				<td><{$vo.create_time|date="Y-m-d H:i:s",###}></td>
+				<td><eq name="vo.status" value="1"><a href="<{:U('__MODULE__/forbid')}>&fid=<{$Think.get.fid}>&id=<{$vo.id}>&navTabId=__MODULE__<{$Think.get.fid}>" target="ajaxTodo" title="确定要取消审核该信息?"><img src="Public/Images/ok.gif" width="20" height="20" /></a><else/><a href="<{:U('__MODULE__/resume')}>&fid=<{$Think.get.fid}>&id=<{$vo.id}>&navTabId=__MODULE__<{$Think.get.fid}>" target="ajaxTodo" title="确定要审核该信息?"><img src="Public/Images/error.gif" width="20" height="20" /></a></eq></td>
+				<td><a class="edit" href="<{:U('__MODULE__/preview')}>&fid=<{$Think.get.fid}>&id=<{$vo.id}>" target="dialog" rel="field" mask="true" width="450" height="300">详细</a> | <a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&fid=<{$Think.get.fid}>&id=<{$vo.id}>&navTabId=__MODULE__<{$Think.get.fid}>" target="ajaxTodo" title="你确定要删除吗？">删除</a></td>
+			</tr>
+            </volist>
+		</tbody>
+	</table>
+	<div class="panelBar">
+		<div class="pages">
+			<span>显示</span>
+			<select class="combox" name="numPerPage" onchange="navTabPageBreak({numPerPage:this.value})">
+				<option value="20" <eq name="page.numPerPage" value="20">selected</eq> >20</option>
+				<option value="40" <eq name="page.numPerPage" value="40">selected</eq>>40</option>
+				<option value="80" <eq name="page.numPerPage" value="80">selected</eq>>80</option>
+				<option value="100" <eq name="page.numPerPage" value="100">selected</eq>>100</option>
+			</select>
+			<span>共<{$page.totalCount}>条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="<{$page.totalCount}>" numPerPage="<{$page.numPerPage}>" pageNumShown="10" currentPage="<{$page.pageNum}>"></div>
+	</div>
+</div>
+
+

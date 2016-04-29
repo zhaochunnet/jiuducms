@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="format-detection" content="telephone=no"/>
+<meta charset="utf-8">
+<title>搜索[!--keywords--]的结果--[!--webname--]</title>
+<link rel="stylesheet" type="text/css" href="[!--tempdir--]/C/css/basic.css">
+<style type="text/css">
+/*head*/
+.list li a:hover,.list li a.hover{color:#000;}
+h2 a,.page li a:hover,.page a{color:#1e6bbd;}
+.hr{height:32px; line-height:32px; padding:0px 27px 0px 27px;}
+.txt{position:relative; height:32px; }
+.txt a:before,.txt a:after{content:"";width:11px; height:32px;position:absolute;top:12px;}
+.txt a:before{left:-19px; background:url([!--tempdir--]/C/images/left_arrow.png) no-repeat;}
+.txt a:after{right:-20px;background:url([!--tempdir--]/C/images/right_arrow.png) no-repeat;}
+/*txt*/
+.txtList{height:27px;border-bottom:1px solid #d8d8d8; background:url([!--tempdir--]/C/images/txtListBg.png) repeat-x;border-bottom:1px solid #d8d8d8;border-top:1px solid #EAEAEA; }
+.txtList p{height:27px;line-height:30px;background:url([!--tempdir--]/C/images/spritr.png) no-repeat 8px -130px;padding-left:30px; }
+.txtList p a,.txtList p{color:#949494;}
+h2{text-align:center; height:44px; line-height:50px;}
+h2 a{font-size:16px;}
+.list li{height:37px; line-height:37px;  position:relative;border-bottom:1px solid #cacaca;}
+.list li a{display:block; height:37px;padding-left:8px;}
+.list li a:hover,.list li a.hover{background:#f2f2f2;}
+.list li a:hover:after,.list li a.hover:after{background:url([!--tempdir--]/C/images/spritr.png) no-repeat 0px -71px;}
+.list li a:after{display:block; content:"";position:absolute;top:35%;right:8px;width:10px; height:10px; background:url([!--tempdir--]/C/images/spritr.png) no-repeat 0px -40px;}
+/*page*/
+.page{height:29px; line-height:29px;background:#efefef; text-align:center;}
+.page li{ display:inline;height:29px; margin:0 2%;}
+.page li a.prePage,.page a.nextPage{width:25%;}
+.referImg{ width:100%; overflow:hidden;}
+.referImg img{ vertical-align:middle;}
+.referImg a{white-space: nowrap;overflow: hidden; display: block;}
+
+</style>
+<body>
+<div class="main" id="main_id">
+<div id="scroller">
+<include file="web/head.html" />
+<div class="txtList">
+<p>当前位置：搜索页 &gt; 搜索"<{$keyword}>"的结果</p>
+</div>
+<ul class="list" id="listId">
+<volist name="list" id="vo" empty="暂时没有结果">
+<li><a href="<{$vo.titleurl}>"><{$vo.title}></a></li>
+</volist>
+</ul>
+<ul class="page">
+<{$page}>
+</ul>
+<include file="web/foot.html" />
+</div>
+</div>
+</body>
+</html>

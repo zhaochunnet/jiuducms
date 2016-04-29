@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/vnd.wap.xhtml+xml;charset=utf-8" />
+<meta content="max-age=1700" http-equiv="Cache-control">
+<meta name="viewport" content = "width=device-width; initial-scale=1.0;  minimum-scale=1.0; maximum-scale=no" />
+<meta content="telephone=no" name="format-detection">
+<title><{$field.title}> - <{$global.jiudu_webname}></title>
+<meta name="description" content="<{$field.description}>" />
+<meta name="keywords" content="<{$field.keywords}>" />
+<link rel="stylesheet" href="<{$global.tempdir}>/css/basic.css" type="text/css" />
+<link rel="stylesheet" href="<{$global.tempdir}>/css/skin.css" type="text/css" />
+<style type="text/css">
+.bannerImg{background:#d0e097;}
+.bannerImg img{vertical-align:middle;}
+.page{height:29px;line-height:29px;background:#efefef; text-align:center; border-bottom:1px solid #CACACA;}
+.page li{display:inline;}
+.page a{display:inline;height:29px; margin:0 2%;}
+.page span{display:inline;height:29px; margin:0 2%;}
+.pageNum{height:60px;padding:10px 8px 10px 8px; border-top:1px solid #cacaca;}
+.pageNum p{height:30px; line-height:30px;overflow:hidden;}
+.recomend{line-height:25px; padding-bottom:10px; border-bottom:1px solid #CACACA;}
+.recomend p{background:#efefef;height:25px; line-height:25px;color:#000000;border-bottom:1px solid #cacaca;padding:0px 8px 0px 12px; margin-bottom:5px;}
+.recomend a{padding:0px 8px 0px 12px;}
+.article h1,.article-info,.link{padding:0px 10px 0px 10px;}
+/*文章*/
+.article h1{border-bottom:none 0; font-size:14px;line-height:30px;text-align:center;font-size:14px;}
+.article-info{font-size:12px;line-height:20px; color:#BBB;text-align:center;}
+.body p{color:#333; line-height:24px; text-indent:2em; font-size:14px;}
+.body{padding:4px 10px 10px 10px;}
+</style>
+</head>
+<body>
+<include file="head.html" />
+<div class="crumb">
+	<p><{$newsnav}></p>
+</div>
+<div class="article">
+    <h1><{$field.title}></h1>
+    <div class="article-info">时间：<{$field.pubdate|date="Y-m-d",###}> 来源：<{$field.source}></div>
+    <div class="body">
+    <{$field.content}>
+	</div>
+</div>
+<div class="pageNum">
+	<p>上一篇：<{$info.pre}></p>
+	<p>下一篇：<{$info.next}></p>
+</div>
+<include file="foot.html" />
+</body>
+</html>

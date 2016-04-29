@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title><{$field.typename}> - <{$global.jiudu_webname}></title>
+<meta name="Keywords"    content="<{$field.keywords}>" >
+<meta name="Description" content="<{$field.description}>" >
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta http-equiv="Cache-Control" content="must-revalidate,no-cache"/>
+<link rel="stylesheet" type="text/css" href="<{$global.tempdir}>/css/basic.css">
+<style type="text/css">
+.message{ padding:10px 0;}
+.message li{ line-height:36px; height:36px; font-size:14px; padding-left:2%; margin-bottom:14px;}
+.message li:last-child{ margin-bottom:0;}
+.message li span{ float:left; /*width:70px;margin-right:10px;*/ width:20%; margin-right:2%; text-align:right; font-weight:400;}
+.message li input.text{ background:#f4f4f4; border:1px solid #d2d2d2; box-shadow: 0 2px 2px -2px #DDD inset; border-radius:4px; height:34px; line-height:34px; /*width:280px; padding:0 10px;*/ width:62%; padding:0 10px;}
+.message li input.text,.message li #comment{color:#787878;}
+.message li #comment{background:#f4f4f4; border:1px solid #d2d2d2; border-radius:4px;/* width:280px;*/ width:66%; height:120px; padding:10px 14px 10px 6px; font-size:14px;}
+.message li.comment{ height:150px; margin-bottom:4px;}
+.message .submit_li{ text-indent:-9999px; color:#FFF;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+<include file="head.html" />
+<include file="nav.html" />
+    <div class="crumb">
+    	<p><{$newsnav}></p>
+    </div>  
+    
+<div class="content">
+	<form action="/index.php?m=Diyform&a=post&typeid=1"  method="post" onSubmit="return isMobile(phone,name)">
+		<ul class="message">
+		  <li><span>姓 名</span><input name='name' class="text" id="name" onFocus="if(this.value==this.defaultValue){this.value='';};"  onblur="if(this.value==''){this.value=this.defaultValue;}" type="text" value="输入您的真实姓名"></li>
+		  <li><span>年 龄</span><input name='nianlin' class="text" onFocus="if(this.value==this.defaultValue){this.value='';};"  onblur="if(this.value==''){this.value=this.defaultValue;}" type="text" value="输入您的年龄"></li>
+		  <li><span>联系电话</span><input name='tel' class="text" id="tel" onFocus="if(this.value==this.defaultValue){this.value='';};"  onblur="if(this.value==''){this.value=this.defaultValue;}" type="text" value="输入您的常用手机号码"></li>
+		  <li><span>就诊时间</span><input name='shijian' class="text" onFocus="if(this.value==this.defaultValue){this.value='';};"  onblur="if(this.value==''){this.value=this.defaultValue;}" type="text" value="例如：2012-01-16"></li>
+		  <li class="comment"><span>留 言</span><textarea name='liuyan' rows="8" cols="45" onFocus="if(this.value==this.defaultValue){this.value='';};"  onblur="if(this.value==''){this.value=this.defaultValue;}" type="text" id="comment">输入您的留言，禁止发表国家禁止的言论。</textarea></li>
+		  <li><span class="submit_li">提交</span><input class="submitBtn" type="submit" value="提交"></li>
+		</ul>
+	</form>
+<script language="JavaScript">
+//校验手机号码：必须以数字开头，除数字外，可含有“-”
+             function isMobile(object,likel)
+            {
+            var s =document.getElementById(object.id).value; 
+            var reg0 = /^13\d{5,9}$/;
+            var reg1 = /^15\d{5,9}$/;
+            var reg2 = /^18\d{5,9}$/;
+            var reg3 = /^(([0\+]\d{2,3})(\D|\s){0,2})(\d{7,8})\d$/;
+            var my = false;
+            var li=document.getElementById(likel.id).value;
+            if(li=="输入您的真实姓名"||li==""){
+            	alert('请输入您的姓名');
+            	likel.focus();
+            	return false;
+            }
+            else{
+            if (reg0.test(s))my=true;
+            if (reg1.test(s))my=true;
+            if (reg2.test(s))my=true;
+            if (reg3.test(s))my=true;
+                if(s!="")
+                {
+                    if (!my)
+                    {
+                       alert('请输入正确的手机号码');
+                       object.value="";
+                       object.focus();
+                       return false;
+                    }
+                    else { 
+                    	return true;
+                    }
+                }
+            }
+        }
+</script>
+</div>
+<include file="foot.html" />
+</body>
+</html>

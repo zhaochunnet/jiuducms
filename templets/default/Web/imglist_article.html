@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title><{$field.typename}> - <{$global.jiudu_webname}>-演示站点</title>
+<meta name="description" content="<{$field.description}>" />
+<meta name="keywords" content="<{$field.keywords}>" />
+<meta name="generator" content="JiuduCMS 1.5.0" />
+<link href="favicon.ico" rel="shortcut icon" />
+<link rel="stylesheet" type="text/css" href="/static/web/style/metinfo_ui.css" />
+<link rel="stylesheet" type="text/css" href="/static/web/style/metinfo.css" />
+<script src="/static/web/js/jQuery1.7.2.js" type="text/javascript"></script>
+<script src="/static/web/js/metinfo_ui.js" type="text/javascript"></script>
+<script src="/static/web/js/ch.js" type="text/javascript"></script>
+<!--[if IE]>
+<script src="/static/web/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+</head>
+<body>
+<include file="head.html" />
+<div class="inner met_flash">
+	<div class="flash"><jiudu:ad id="1"/></div>
+</div>
+<div class="sidebar inner">
+	<include file="left.html" />
+	<div class="sb_box">
+		<h3 class="title">
+			<div class="position">当前位置：<{$newsnav}></div>
+			<span><{$field.typename}></span> </h3>
+		<div class="clear"></div>
+		<div class="active" id="productlist">
+			<ul class='list-none metlist'>
+				<jiudu:list name="list">
+				<li class='list' style='width:215px; margin-left:15px; margin-right:15px;'><a href='showproduct.php?lang=cn&id=16' title='<{$jiudu.title}>' target='_self' class='img'><img src='<{$jiudu.litpic}>' alt='<{$jiudu.title}>' title='<{$jiudu.title}>' width='213' height='160' /></a>
+					<h3><a href='<{$jiudu.titleurl}>' title='<{$jiudu.title}>' target='_self'><{$jiudu.title}></a></h3>
+				</li>
+				</jiudu:list>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<div id="flip">
+			<div class='digg4 metpager_8'><{$page}></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<include file="foot.html"/>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<include file="Public:pagerForm" />
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="<{:U('__MODULE__/add')}>" target="dialog" rel="add" mask="true" width="400" height="150"><span>新增</span></a></li>
+			<li><a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&id={sid_user}&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除吗？" warn="请选择栏目"><span>删除</span></a></li>
+			<li><a class="edit" href="<{:U('__MODULE__/update')}>&id={sid_user}&navTabId=__MODULE__" target="dialog" mask="true" width="400" height="150" warn="请选择分类"><span>编辑</span></a></li>
+		</ul>
+	</div>
+
+	<table class="table" width="100%" layoutH="75" >
+		<thead>
+			<tr>
+				<th width="40"></th>
+				<th width="300">分类名称</th>
+				<th width="280">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+        	<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo.id}>">
+				<td></td>
+				<td><{$vo.name}></td>
+				<td>&nbsp;&nbsp;<a href="<{:U('__MODULE__/update')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="dialog" mask="true" width="400" height="150">修改</a> | <a href="<{:U('__MODULE__/foreverdelete')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要删除吗?">删除</a></td>
+			</tr>
+            </volist>
+		</tbody>
+	</table>
+	<div class="panelBar"></div>
+</div>

@@ -1,0 +1,49 @@
+<div id="sidebar">
+		<div id="hot-posts" class="cbx">
+			<h3><span>热门文章</span></h3>
+			<div class="ctx">
+				<ul>
+					<jiudu:arclist typeid='1,2,3,4,5,6' row='10' orderby='click desc'>
+					<li><a href="<{$jiudu.titleurl}>" title="<{$jiudu.title}>" ><{$jiudu.title}></a></li>
+					</jiudu:arclist>
+				</ul>
+			</div>
+		</div>
+		<div class="cbx">
+			<h3><span>最新日志</span></h3>
+			<div class="ctx">
+				<ul id="twitter">
+					<jiudu:arclist typeid='1,2,3,4,5,6' row='10' orderby='pubdate desc'>
+					<li><a href="<{$jiudu.titleurl}>" title="<{$jiudu.title}>" ><{$jiudu.title}></a></li>
+					</jiudu:arclist>
+					<p><a href="http://blog.akng.net/t/">更多&raquo;</a></p>
+				</ul>
+			</div>
+		</div>
+		<div class="cbx list2">
+			<h3><span>分类</span></h3>
+			<div class="ctx">
+				<ul id="blogsort">
+					<jiudu:channel type="top" row="10"> 
+					<li> <a href="<{$jiudu.typeurl}>"><{$jiudu.typename}></a> </li>
+					</jiudu:channel>
+				</ul>
+			</div>
+		</div>
+		<div class="cbx" id="recent-comments">
+			<h3><span>最新评论</span></h3>
+			<div class="ctx">
+				<ul class="ds-recent-comments newcomment" data-num-items="10"></ul>
+			</div>
+		</div>
+		<div class="cbx list2">
+			<h3><span>友情链接</span></h3>
+			<div class="ctx">
+				<ul id="link">
+					<jiudu:flink row='10' type='0'>
+					<li><a href="<{$jiudu.weburl}>" title="<{$jiudu.webname}>" target="_blank"><{$jiudu.webname}></a></li>
+					</jiudu:flink>
+				</ul>
+			</div>
+		</div>
+	</div>

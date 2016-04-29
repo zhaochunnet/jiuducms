@@ -1,0 +1,100 @@
+<tagLib name="jiudu" />
+<div class="pageContent">
+	<form method="post" name="form1" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone)">
+    <input type="hidden" name="id" value="<{$vo.id}>" />
+    <input type="hidden" name="typeid" value="<{$vo.typeid}>" />
+    <input type="hidden" name="aid" value="<{$vo.aid}>" />
+		<div class="pageFormContent" layoutH="55">
+        	<p style="width:500px;">
+				<label>文档标题：</label>
+				<input name="title" type="text" style="width:350px;" alt="请输入文章标题" value="<{$vo.title}>" class="required"/>
+			</p>
+            <p>
+				<label>文档短标题：</label>
+				<input name="shorttitle" type="text" size="20" alt="" value="<{$vo.shorttitle}>"/>
+			</p>
+            <p style=" width:98%;">
+				<label>自定义属性：</label>
+                <volist name="flags" id="f">
+				<label style="width:60px;"><input name="flags[]" type="checkbox" value="<{$f.k}>" <eq name="f.t" value="1">checked="checked"</eq> />&nbsp;<{$f.v}>[<{$f.k}>]</label>
+                </volist>
+			</p>
+            <p>
+				<label>缩略图：</label>
+                <input name="litpic" id="litpic" type="text" value="<{$vo.litpic}>"/><a onclick="upload('litpic')" class="button uploadpic" href="javascript:;"><span>选择图片</span></a>
+			</p>
+             <p>
+				<label>权重：</label>
+				<input name="weight" type="text" size="8" alt="" value="<{$vo.weight}>" class="digits"/>&nbsp;&nbsp;&nbsp;<font>越大越靠前</font>
+			</p>
+            <p>
+				<label>文档来源：</label>
+				<input name="dis.source" type="text" size="20" alt="" value="<{$vo.source}>"/>
+                <a class="btnLook" href="<{:U('Public/source')}>" width="300" height="150" lookupGroup="dis">选择来源</a>
+			</p>
+            <p>
+				<label>文档作者：</label>
+                <input name="district.writer" type="text" value="<{$vo.writer}>"/>
+				<a class="btnLook" href="<{:U('Public/writer')}>" width="300" height="150" lookupGroup="district">选择作者</a>
+			</p>
+            <!--<p>
+            <label>文章栏目：</label>
+            <select name="typeid" id="type">
+				<option value="0" >选择栏目&nbsp;&nbsp;&nbsp;</option>
+                <volist name="value" id="v">
+                <option value="<{$v.id}>" <eq name="vo.typeid" value="$v.id">selected="selected"</eq>><{$v.typename}></option>
+                </volist>
+			</select>
+            </p>-->
+			<p style="width:98%;<eq name="vo.url" value="">display:none;</eq>" id="arcurl">
+				<label>外部地址：</label>
+				<input name="url" type="text" size="50" value="<{$vo.url}>" class="url textInput <neq name="vo.url" value="">required</neq>"/>
+			</p>
+            <p style="width:98%;">
+				<label>关键字：</label>
+				<input name="keywords" id="key" type="text" size="60" value="<{$vo.keywords}>"/>
+			</p>
+            <dl class="nowrap">
+			<dt>文章摘要：</dt>
+			<dd><textarea name="description" cols="60" rows="4"><{$vo.description}></textarea></dd>
+			</dl>
+           	<div>
+            <include file="$fieldset" />
+            </div>
+            <p>
+				<label>浏览次数：</label>
+				<input name="click" type="text" size="20" value="<{$vo.click}>" class="digits"/>
+			</p>
+            <p>
+				<label>发布时间：</label>
+				<input type="text" name="pubdate" id="dataval" class="date" dateFmt="yyyy-MM-dd HH:mm:ss" value="<{$vo.pubdate|date="Y-m-d H:i:s",###}>" readonly="true"/>
+				<a class="inputDateButton" href="javascript:;">选择</a>
+			</p>
+            </div>
+		<div class="tabsFooter">
+			<div class="tabsFooterContent"></div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit" id="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+<script type="text/javascript">
+$(function(){
+	$(window).scrollTop(0);
+	$("input[value='j']").click(function(){
+		if($(this).is(":checked")){
+			$('#arcurl').show();
+			$("input[name='url']").addClass('required');
+		}else{
+			$('#arcurl').hide();
+			$("input[name='url']").removeClass('required');
+		}
+	});
+})
+</script>
+</div>

@@ -1,0 +1,80 @@
+<form id="pagerForm" action="__SELF__" method="post">
+	<input type="hidden" name="pageNum" value="<{$page.pageNum}>"/>
+	<input type="hidden" name="numPerPage" value="<{$page.numPerPage}>"/>
+	<input type="hidden" name="_order" value="<{$_REQUEST._order}>"/>
+	<input type="hidden" name="_sort" value="<{$_REQUEST._sort}>"/>
+</form>
+<div class="pageHeader">
+	<form rel="pagerForm" onsubmit="return navTabSearch(this);" action="__SELF__" method="post">
+	<div class="searchBar">
+		<ul class="searchContent">
+			<li>
+				<label>用户名：</label>
+				<input type="text" name="account" value=""/>
+			</li>
+		</ul>
+		<div class="subBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+			</ul>
+		</div>
+	</div>
+	</form>
+</div>
+
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="<{:U('__MODULE__/add')}>" target="dialog" width="600" height="350" mask="true"><span>新增</span></a></li>
+			<li><a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&id={sid_user}&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除吗？" warn="请选择用户"><span>删除</span></a></li>
+			<li><a class="edit" href="<{:U('__MODULE__/update')}>&id={sid_user}" target="dialog" mask="true" width="600" height="350" warn="请选择用户"><span>编辑</span></a></li>
+			<li class="line">line</li>
+			<li><a class="icon" href="<{:U('__MODULE__/password')}>&id={sid_user}" target="dialog" width="550" height="200" mask="true" warn="请选择用户"><span>修改密码</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="138">
+		<thead>
+		<tr>
+			<th width="30" align="center">编号</th>
+			<th width="100" align="center" orderField="account" <if condition="$_REQUEST._order eq 'account'">class="<{$_REQUEST._sort}>"</if>>用户名</th>
+			<th align="center" width="80" orderField="nickname" <if condition="$_REQUEST._order eq 'nickname'">class="<{$_REQUEST._sort}>"</if>>昵称</th>
+            <th align="center" width="80">用户组</th>
+			<th align="center" width="100" orderField="email" <if condition="$_REQUEST._order eq 'email'">class="<{$_REQUEST._sort}>"</if>>Email</th>
+			<th align="center" width="100" orderField="create_time" <if condition="$_REQUEST._order eq 'create_time'">class="<{$_REQUEST._sort}>"</if>是>添加时间</th>
+			<th align="center" width="120" orderField="last_login_time" <if condition="$_REQUEST._order eq 'last_login_time'">class="<{$_REQUEST._sort}>"</if>>上次登录</th>
+            <th align="center" width="100" orderField="last_login_ip" <if condition="$_REQUEST._order eq 'last_login_ip'">class="<{$_REQUEST._sort}>"</if>>上次登录IP</th>
+			<th align="center" width="60" orderField="login_count" <if condition="$_REQUEST._order eq 'login_count'">class="<{$_REQUEST._sort}>"</if>>登录次数</th>
+			<th align="center" width="50" orderField="status" <if condition="$_REQUEST._order eq 'status'">class="<{$_REQUEST._sort}>"</if>>状态</th>
+		</tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo['id']}>">
+				<td><{$vo['id']}></td>
+				<td><{$vo['account']}></td>
+				<td><{$vo['nickname']}></td>
+                <td><{$role[$vo['role_id']]}></td>
+				<td><{$vo['email']}></td>
+				<td><{$vo['create_time']|date="Y-m-d",###}></td>
+				<td><{$vo['last_login_time']|date="Y-m-d H:i:s",###}></td>
+                <td><{$vo['last_login_ip']|default="还没有登陆过"}></td>
+				<td><{$vo['login_count']|default="还没有登陆过"}></td>
+				<td><eq name="vo.status" value="1"><a href="<{:U('__MODULE__/forbid')}>&navTabId=__MODULE__&id=<{$vo['id']}>" target="ajaxTodo" title="确定要禁用此用户?"><img src="Public/Images/ok.gif" width="20" height="20" /></a><else/><a href="<{:U('__MODULE__/resume')}>&navTabId=__MODULE__&id=<{$vo['id']}>" target="ajaxTodo" title="确定要启用此用户?"><img src="Public/Images/error.gif" width="20" height="20" /></a></eq></td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+	<div class="panelBar">
+		<div class="pages">
+			<span>显示</span>
+			<select class="combox" name="numPerPage" onchange="navTabPageBreak({numPerPage:this.value})">
+				<option value="20" <eq name="page.numPerPage" value="20">selected</eq> >20</option>
+				<option value="40" <eq name="page.numPerPage" value="40">selected</eq>>40</option>
+				<option value="80" <eq name="page.numPerPage" value="80">selected</eq>>80</option>
+				<option value="100" <eq name="page.numPerPage" value="100">selected</eq>>100</option>
+			</select>
+			<span>共<{$page.totalCount}>条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="<{$page.totalCount}>" numPerPage="<{$page.numPerPage}>" pageNumShown="10" currentPage="<{$page.pageNum}>"></div>
+	</div>
+</div>

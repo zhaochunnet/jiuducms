@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/vnd.wap.xhtml+xml;charset=utf-8" />
+<meta content="max-age=1700" http-equiv="Cache-control">
+<meta name="viewport" content = "width=device-width; initial-scale=1.0;  minimum-scale=1.0; maximum-scale=no" />
+<meta content="telephone=no" name="format-detection">
+<title><{$field.typename}> - <{$global.jiudu_webname}></title>
+<meta name="description" content="<{$global.jiudu_description}>" />
+<meta name="keywords" content="<{$global.jiudu_keywords}>" />
+<link rel="stylesheet" href="<{$global.tempdir}>/css/basic.css" type="text/css" />
+<link rel="stylesheet" id="skin" href="<{$global.tempdir}>/css/skin.css" type="text/css" />
+<style type="text/css">
+/*content*/
+.content{min-height:180px;padding-top:10px;font-size:14px;}
+.content{font-size:14px;width:240px;border-bottom:1px solid #ebebeb;}
+.content table tr{height:30px;}
+/*message*/
+.inputTxt{width:120px;}
+</style>
+</head>
+<body>
+<include file="head.html" />
+<div class="crumb">
+	<p><{$newsnav}></p>
+</div>
+<div class="content">
+<form method="post" action="/index.php?m=Diyform&a=post&typeid=1">
+<table>
+<tr>
+<td >姓 名</td><td  align="left"><input name='name' class="inputTxt" type="text" /></td>
+</tr>
+<tr>
+<td>年 龄</td><td  align="left"><input name='nianlin' class="inputTxt" type="text" /></td>
+</tr>
+<tr>
+<td>联系电话</td><td  align="left"><input name='tel' class="inputTxt" type="text" /></td>
+</tr>
+<tr>
+<td>就诊时间</td><td  align="left"><input name='shijian' class="inputTxt" type="text" /></td>
+</tr>
+<tr>
+<td>留 言</td><td  align="left"><textarea name='liuyan' class="inputTxt"  cols="10" rows="5"></textarea></td>
+</tr>
+<tr>
+<td></td><td><input type="submit" value="提交"></td>
+</tr>
+</table>
+</form>
+</div>
+<include file="foot.html" />
+</body>
+</html>

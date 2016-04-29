@@ -1,0 +1,63 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<div class="pageFormContent" layoutH="58">
+			<div class="unit">
+				<label>菜单名称：</label>
+				<input type="text" class="required" size="30" maxlength="20" name="name"/>
+			</div>
+			<div class="unit">
+				<label>分组名称：</label>
+				<input type="text" class="lettersonly" size="30" name="group"/>
+			</div>
+            <div class="unit">
+				<label>模块名称：</label>
+				<input type="text" class="lettersonly" size="30" maxlength="20" name="model"/>
+			</div>
+			<div class="unit">
+				<label>操作名称：</label>
+				<input type="text" class="lettersonly" size="30" maxlength="20" name="action"/>
+			</div>
+			<div class="unit">
+				<label>菜单标识：</label>
+				<input type="text" size="30" maxlength="20" name="rel"  />
+			</div>
+			<div class="unit">
+				<label>打开方式：</label>
+				<label style="width:40px;"><input type="radio" name="target"  checked="checked" value="" />无</label>
+				<label style="width:60px;"><input type="radio" name="target" value="navTab" />新窗口</label>
+				<label style="width:60px;"><input type="radio" name="target" value="dialog" />弹出层</label>
+				<label style="width:60px;"><input type="radio" name="target" value="ajaxTodo" />提示框</label>
+			</div>
+			<div class="unit">
+				<label>自定义链接：</label>
+				<input type="text" class="url" size="30" maxlength="20" name="url"  />
+			</div>
+            <div class="unit">
+				<label>上级菜单：</label>
+				<select name="pid">
+                	<option value="0">顶级菜单</option>
+                    <volist id="vo" name="list">
+                    	<option value="<{$vo['id']}>"><{$vo['fullname']}></option>
+                    </volist>
+				</select>
+			</div>
+			<div class="unit">
+				<label>菜单类型：</label>
+				<label style="width:60px;"><input type="radio" name="type" value="0" checked="checked" />&nbsp;顶级</label>
+				<label style="width:60px;"><input type="radio" name="type" value="1" />&nbsp;分组</label>
+				<label style="width:60px;"><input type="radio" name="type" value="2" />&nbsp;终极</label>
+			</div>
+			<div class="unit">
+				<label>状态：</label>
+				<label style="width:60px;"><input type="radio" name="status" value="1" checked="checked" />启用</label>
+				<label style="width:60px;"><input type="radio" name="status" value="0" />禁用</label>
+			</div>			
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

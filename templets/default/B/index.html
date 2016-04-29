@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/vnd.wap.xhtml+xml;charset=utf-8" />
+<meta content="max-age=1700" http-equiv="Cache-control">
+<meta name="viewport" content = "width=device-width; initial-scale=1.0;  minimum-scale=1.0; maximum-scale=no" />
+<meta content="telephone=no" name="format-detection">
+<title><{$global.jiudu_webname}> - 首页</title>
+<meta name="description" content="<{$global.jiudu_description}>" />
+<meta name="keywords" content="<{$global.jiudu_keywords}>" />
+<link rel="stylesheet" href="<{$global.tempdir}>/css/basic.css" type="text/css" />
+<link rel="stylesheet" id="skin" href="<{$global.tempdir}>/css/skin.css" type="text/css" />
+<style type="text/css">
+/*title*/
+.content h1{text-align:center; line-height:30px;}
+.content h1{border-bottom:none 0; font-size:15px;line-height:30px;margin:5px 0px;text-align:center;}
+.refer{padding-top:8px;border-bottom:1px solid #cacaca;background:#f4f4f4;}
+.refer p{text-indent:28px;line-height:23px;padding:0px 8px 8px 8px;}
+.bannerImg img{vertical-align:middle;}
+.clearfix{clear:both;}
+/*index*/
+.content1 a,.content1 span,.content2 a,.content2 span{;font-size:12px;line-height:20px;}
+.content1 span{margin:0px 10px;}
+.content2 span{margin:0px 15px;}
+.content1 a:hover,.content2 a:hover,.content3 a:hover{text-decoration:underline;}
+.content1 strong a,.content2 strong a{/*color:#ff5400;*/ color:#FFF; background:#005BAC; padding:1px 2px;line-height:25px;font-size:12px;}
+.content1 p,.content2 p{background:#005BAC;color:#FFF; }
+.content1 p strong,.content2 p strong{color:#FFF; }
+.ccc{background:#f0f0f0;padding:4px 0 4px 0;}
+.border{border-bottom:1px solid #cacaca;}
+.content1 div,.content2 div{ padding-left:10px;}
+.content1 p,.content2 p{ padding-left:10px;}
+.list li strong{ float:left; margin-right:4px;}
+.list li strong a{ color:#005BAC; font-size:14px;}
+</style>
+</head>
+<body>
+<include file="head.html" />
+<div class="search">
+  <form method="post" action="/index.php?m=Search">
+    <input class="text" name="keyword" type="text" width="100" value="" onFocus="if(this.value==this.defaultValue){this.value='';};"  onblur="if(this.value==''){this.value=this.defaultValue;}"  >
+    <input type="submit" value="搜索">
+  </form>
+</div>
+
+
+<div class="title"> <a href="/index.php?m=List&id=13756">海总动态</a></div>
+<div class="content">
+	<ul class="list">
+		<jiudu:arclist typeid='14074' row='1' orderby='pubdate desc'>
+    	<li><strong><a href="<{$jiudu.typeurl}>"><{$jiudu.typename}></a></strong><a href="<{$jiudu.titleurl}>"><{$jiudu.title}></a></li>
+		</jiudu:arclist>
+        <jiudu:arclist typeid='14075' row='1' orderby='pubdate desc'>
+    	<li><strong><a href="<{$jiudu.typeurl}>"><{$jiudu.typename}></a></strong><a href="<{$jiudu.titleurl}>"><{$jiudu.title}></a></li>
+		</jiudu:arclist>
+		<jiudu:arclist typeid='14076' row='1' orderby='pubdate desc'>
+    	<li><strong><a href="<{$jiudu.typeurl}>"><{$jiudu.typename}></a></strong><a href="<{$jiudu.titleurl}>"><{$jiudu.title}></a></li>
+		</jiudu:arclist>
+  </ul>
+</div>
+
+<div class="title"> <a>特色项目</a></div>
+<div class="content1 ccc">
+	<p><strong>手术美容</strong></p>
+	<div>
+	<jiudu:channel id="13760" type="son" row="7"> 
+		<a href="<{$jiudu.typeurl}>"  class="common"><{$jiudu.typename}></a><span>|</span>
+	</jiudu:channel>
+	</div>
+</div>
+<div class="content2 ccc">
+	<p><strong>激光美容</strong></p>
+	<div>
+<jiudu:channel id="13767" type="son" row="7"> 
+		<a href="<{$jiudu.typeurl}>"  class="common"><{$jiudu.typename}></a><span>|</span>
+	</jiudu:channel>
+	</div>
+</div>
+<div class="content1 ccc">
+	<p><strong>注射美容</strong></p>
+	<div>
+	<jiudu:channel id="13774" type="son" row="7"> 
+		<a href="<{$jiudu.typeurl}>"  class="common"><{$jiudu.typename}></a><span>|</span>
+	</jiudu:channel>
+	</div>
+</div>
+<div class="title">成功案例</div>
+<div class="content case">
+<style type="text/css">.case{ text-align:center; padding:10px 0;}.case img{ max-width:90%;}</style>
+		<jiudu:arclist typeid='13759' row='1' orderby='pubdate desc'>
+		<a href="<{$jiudu.titleurl}>"><img src="<{$jiudu.litpic}>" alt="<{$jiudu.title}>" /></a>
+		</jiudu:arclist>
+</div>
+<div class="title">专家团队</div>
+<div class="content">
+	<jiudu:arclist typeid='14078,14079,14080' row='2' orderby='pubdate desc'>
+		<div class="expert-img">
+			 <div class="expertCon"><a href="<{$jiudu.titleurl}>"><img src="<?=$bcyd['smallimg']?>" alt="<{$jiudu.title}>" width="82" height="90" /></a></div>
+			 <p class="peo"><a class="peoTxt" href="<{$jiudu.titleurl}>"><{$jiudu.title}></a><p>
+			 <p><{$jiudu.description|esub='16'}>...<a class="peoText" href="<{$jiudu.titleurl}>">[详细]</a></p>
+		</div>
+	</jiudu:arclist>
+</div>
+</div>
+<include file="foot.html" />
+</body>
+</html>

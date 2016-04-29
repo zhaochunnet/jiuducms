@@ -1,0 +1,69 @@
+<div class="pageContent">
+	<form method="post" name="form1" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<div class="pageFormContent" layoutH="57">
+            <p style=" width:98%;">
+            <label>专题分类：</label>
+            <select name="typeid">
+                <volist name="value" id="vo">
+                <option value="<{$vo.id}>"><{$vo.name}></option>
+                </volist>
+			</select>
+            </p>
+			<p style=" width:98%;">
+				<label>专题名称：</label>
+				<input name="name" type="text" size="30" id="typename" alt="请输入专题名称" class="required"/>
+			</p>
+			<p style="width:98%;">
+				<label>专题关键字：</label>
+				<input name="keywords" type="text" size="60"/>
+			</p>
+            <dl style="width:98%; height:68px;">
+			<dt>专题摘要：</dt>
+			<dd><textarea name="description" class="textInput" style="width:400px; height:60px;"></textarea></dd>
+			</dl>
+            <p style=" width:98%;">
+				<label>专题缩略图：</label>
+				<input name="ztpic" id="ztpic" type="text"/><a class="button uploadpic" onclick="upload('ztpic')" href="javascript:;"><span>选择图片</span></a>
+			</p>
+			<p style=" width:98%;">
+				<label>是否生成静态：</label>
+				<label><input type="radio" name="isdefault" value="1" checked="checked">是</label>
+				<label><input type="radio" name="isdefault" value="0">否</label>
+			</p>
+			<p style=" width:98%;">
+				<label>上级目录：</label>
+				<input type="text" name="typedir" size="30" value="<{$pathdir}>">
+			</p>
+			<p style=" width:98%;">
+				<label>本专题目录：</label>
+				<input name="dirname" type="text" id="dirname" size="30"/>
+				<a class="button pinyin" href="javascript:;"><span>拼音</span></a>
+			</p>
+			<p style=" width:98%;">
+				<label>专题模版：</label>
+				<input name="index.temp" type="text" size="30" alt="请选择专题模版" value="topic_default.html" class="required"/>
+                <a class="btnLook" href="<{:U('Edition/Templets/public_list')}>" width="300" height="350" lookupGroup="index">选择模版</a>
+			</p>
+            <dl style="width:98%; height:36px;">
+			<dt>备注：</dt>
+			<dd><textarea name="remark" style="width:400px; height:60px;"></textarea></dd>
+			</dl>
+            </div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+$('.pinyin').click(function(){
+	url = "<{:U('Public/pinyin')}>&name="+$('#typename').val();
+    $.get(url,function(jsondata){
+		$('#dirname').val(jsondata);
+	})
+})
+</script>

@@ -1,0 +1,39 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&navTabId=Sysconfigsoft" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);" >
+    	<div class="panelBar"><ul class="toolBar"></ul></div>
+		<table class="table" width="100%" layoutH="63">
+                <tbody>
+					<volist id="vo" name="list">
+					<if condition="$vo.type eq bstring">
+					<tr target="sid_user" rel="<{$vo.id}>" style="height:80px;">
+                    <else/>
+                    <tr target="sid_user" rel="<{$vo.id}>" style="height:30px;">
+                    </if>
+                        <td width="20%" align="right"><{$vo.info}>：</td>
+                        <td class="bstring">
+						<if condition="$vo.type eq enum">
+						<volist name="vo.extra" id="v">
+                        <label><input type="radio" name="<{$vo.varname}>" value="<{$key}>" <eq name="vo.value" value="$key">checked</eq>/><{$v}></label>&nbsp;&nbsp;
+                        </volist>
+						<elseif condition="$vo.type eq bstring"/>
+                        <textarea style="width:400px; height:70px;" name="<{$vo.varname}>"><{$vo.value}></textarea>
+                        </if>
+                        </td>
+						<td width="25%"></td>
+                    </tr>
+					</volist>
+                </tbody>
+			</table>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
+<style type="text/css">
+.grid .gridTbody td.bstring div{ height:100%;}
+</style>

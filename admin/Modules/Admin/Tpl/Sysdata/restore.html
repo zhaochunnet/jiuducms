@@ -1,0 +1,20 @@
+<div class="pageContent">
+	<form method="post" action="<{:U('__MODULE__/restoredo')}>" target="_blank" class="pageForm required-validate">
+		<div class="pageFormContent" layoutH="57">
+            <dl class="nowrap">
+			<dt>选择要恢复的数据源：</dt>
+			<dd style="width:200px;"><volist id="vo" name="list">
+			<label style="width:180px;"><input type="radio" name="datadir" value="<{$vo}>"><{$vo}></label>
+			</volist></dd>
+			</dl>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">恢复</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>

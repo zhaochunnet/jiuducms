@@ -1,0 +1,92 @@
+<div class="pageContent" layoutH="0">
+	<div style="width:59.8%;float:left;min-height:100px">
+		<div class="panel" minH="30">
+		<h1>主要页面生成</h1>
+		<div class="colspan3">
+			<p><a class="button" href="<{:U('__MODULE__/home')}>" target="ajaxTodo"><span>生成首页</span></a></p>
+			<p><a class="button" href="<{:U('__MODULE__/arctype')}>" target="_blank"><span>生成栏目页</span></a></p>
+			<p><a class="button" href="<{:U('__MODULE__/archives')}>" target="_blank"><span>生成内容页</span></a></p>
+		</div>
+		</div>
+		<div class="panel" minH="50">
+		<h1>生成多栏目页</h1>
+		<div style="text-align:center;">
+			<form method="post" action="<{:U('__MODULE__/arctype')}>" target="_blank" class="pageForm required-validate">
+			<select name="typeid[]" multiple="multiple" style="width:310px; height:175px;">
+				<volist id="vo" name="Arctypelist">
+                <option value="<{$vo.id}>" <eq name="vo.ispart" value="2">style="background:#99C4E3"</eq>
+ ><{$vo.fullname}></option>
+				</volist>
+			</select>
+			<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">开始生成</button></div></div></li>
+			</ul>
+			</div>
+			</form>
+		</div>
+		</div>
+		<div class="panel" minH="50">
+		<h1>自定义生成内容页</h1>
+		<div>
+			<form method="post" action="<{:U('__MODULE__/archives')}>" target="_blank" class="pageForm required-validate">
+			<div style="float:left; width:50%">
+			<select name="typeid[]" multiple="multiple" style="width:200px; height:100px;">
+				<volist id="vo" name="Arctypelist">
+                <option value="<{$vo.id}>" <eq name="vo.ispart" value="2">style="background:#99C4E3"</eq>
+ ><{$vo.fullname}></option>
+				</volist>
+			</select>
+			</div>
+			<div style="float:left; width:50%">
+			<p style="padding-top:8px;"><label>每组生成：<input name="row" style="width:30px;" type="text" class="digits" value="30">条数</label></p>
+			<p style="padding-top:8px;"><label>起始ID：&nbsp;&nbsp;<input name="strid" style="width:30px;" type="text" class="digits"></label></p>
+			<p style="padding-top:8px;"><label>结束ID：&nbsp;&nbsp;<input name="endid" style="width:30px;" type="text" class="digits"></label></p>
+			</div>
+			<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">开始生成</button></div></div></li>
+			</ul>
+			</div>
+			</form>
+		</div>
+		</div>
+	</div>
+	<div style="width:39.8%;float:right;min-height:100px">
+		<div class="panel" minH="30">
+		<h1>更新缓存</h1>
+		<div class="colspan2">
+			<p><a class="button" href="<{:U('Public/delcache')}>&path=all" target="ajaxTodo"><span>更新系统缓存</span></a></p>
+			<p><a class="button" href="<{:U('Admin/Public/renewconfig')}>" target="ajaxTodo"><span>更新配置缓存</span></a></p>
+		</div>
+		</div>
+		<div class="panel" minH="50">
+		<h1>其他页面更新</h1>
+		<div class="colspan2">
+        	<p><a class="button" href="<{:U('__MODULE__/topic')}>" target="_blank"><span>生成专题页</span></a></p>
+			<p><a class="button" href="<{:U('__MODULE__/ad')}>" target="ajaxTodo"><span>更新广告JS文件</span></a></p>
+		</div>
+		</div>
+		<div class="panel" minH="50">
+		<h1>自定义生成专题页</h1>
+		<div style="text-align:center;">
+			<form method="post" action="<{:U('__MODULE__/topic')}>" target="_blank" class="pageForm required-validate">
+			<select name="topicid[]" multiple="multiple" style="width:260px; height:80px;">
+				<volist id="vo" name="Topiclist">
+                <option value="<{$vo.id}>"><{$vo.name}></option>
+				</volist>
+			</select>
+			<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">开始生成</button></div></div></li>
+			</ul>
+			</div>
+			</form>
+		</div>
+		</div>
+	</div>
+	</div>
+<style type="text/css">
+.colspan2 p{width:40%; padding-left:5%;padding-top:10px; height:30px;float:left;}
+.colspan3 p{width:28%; padding-left:5%;padding-top:10px; height:30px;float:left;}
+</style>

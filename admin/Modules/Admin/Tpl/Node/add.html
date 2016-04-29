@@ -1,0 +1,43 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<div class="pageFormContent" layoutH="58">
+			<div class="unit">
+				<label>节点名称：</label>
+				<input type="text" class="required" size="30" maxlength="20" name="title" value="" />
+			</div>
+            <div class="unit">
+				<label>节点标识：</label>
+				<input type="text" class="required lettersonly" size="30" maxlength="20" name="name" value="" />
+			</div>
+            <div class="unit">
+				<label>所属节点：</label>
+				<select name="pid">
+					<option value="0">系统模块</option>
+                    <volist id="vo" name="list">
+                    <option <eq name="vo['id']" value="$Think.get.id">selected="selected"</eq> value="<{$vo['id']}>"><{$vo['fullname']}></option>
+                    </volist>
+				</select>
+			</div>
+			<div class="unit">
+				<label>系统内置：</label>
+				<label style="width:60px;"><input type="radio" name="core" value="1" checked="checked"/>是</label>
+				<label style="width:60px;"><input type="radio" name="core" value="0" />否</label>
+			</div>
+			<div class="unit">
+				<label>状态：</label>
+				<label style="width:60px;"><input type="radio" name="status" value="1" checked="checked"/>启用</label>
+				<label style="width:60px;"><input type="radio" name="status" value="0" />禁用</label>
+			</div>
+			<div class="unit">
+				<label>备注信息：</label>
+				<textarea name="remark" rows="3" cols="57"></textarea>
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

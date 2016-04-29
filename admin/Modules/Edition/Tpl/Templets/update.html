@@ -1,0 +1,23 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+	<input name="path" type="hidden" size="30" value="<{$Think.get.path}>"/>
+		<div class="pageFormContent" layoutH="57">
+			<p style=" width:98%;">
+				<label>模板名称：</label>
+				<input name="filename" type="text" size="50" alt="请输入模版名称" value="<{$vo.name}>" class="required"/>
+			</p>
+            <dl class="nowrap">
+			<dt>模板内容：</dt>
+			<dd style="width:99%;"><textarea name="content" style="width:100%; height:800px;"><{$vo.content}></textarea></dd>
+			</dl>
+        </div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>

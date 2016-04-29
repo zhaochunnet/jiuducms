@@ -1,0 +1,77 @@
+<form id="pagerForm" action="__SELF__" method="post">
+	<input type="hidden" name="pageNum" value="<{$page.pageNum}>"/>
+	<input type="hidden" name="numPerPage" value="<{$page.numPerPage}>"/>
+	<input type="hidden" name="_order" value="<{$_REQUEST._order}>"/>
+	<input type="hidden" name="_sort" value="<{$_REQUEST._sort}>"/>
+</form>
+<div class="pageHeader">
+	<form rel="pagerForm" onsubmit="return navTabSearch(this);" action="__SELF__" method="post">
+	<div class="searchBar">
+		<ul class="searchContent">
+			<li>
+				<label>标题：</label>
+				<input type="text" name="title" value="<{$where.title}>"/>
+			</li>
+            <li>
+				<label>URL：</label>
+				<input type="text" name="url" value="<{$where.url}>"/>
+			</li>
+		</ul>
+		<div class="subBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+			</ul>
+		</div>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="<{:U('__MODULE__/add')}>" target="dialog" rel="add" mask="true" width="520" height="350"><span>新增</span></a></li>
+			<li><a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&id={sid_user}&navTabId=__MODULE__" target="ajaxTodo" title="确定要删除该版本吗？删除后该版本对应模板也将会删除，请做好备份" warn="请选择版本"><span>删除</span></a></li>
+			<li><a class="edit" href="<{:U('__MODULE__/update')}>&id={sid_user}" target="dialog" rel="edit" mask="true" width="520" height="350" warn="请选择版本"><span>编辑</span></a></li>
+		</ul>
+	</div>
+
+	<table class="list" width="100%" layoutH="115" >
+		<thead>
+			<tr>
+				<th width="20" align="center">ID</th>
+				<th width="80" align="center">标题</th>
+				<th width="60" align="center">PC端URL</th>
+                <th width="60" align="center">手机端URL</th>
+                <th width="100" align="center">添加时间</th>
+                <th width="80" align="center">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+        	<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo.id}>">
+				<td align="center"><{$vo.id}></td>
+                <td><{$vo.title}></td>
+                <td><{$vo.pcurl}></td>
+                <td><{$vo.phoneurl}></td>
+				<td align="center"><{$vo.create_time|date="Y-m-d H:i:s",###}></td>
+				<td align="center">
+					<a href="<{:U('__MODULE__/update')}>&id=<{$vo.id}>" target="dialog" rel="edit" mask="true" width="520" height="350">修改</a> | 
+					<a href="<{:U('__MODULE__/foreverdelete')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要删除该版本吗？删除后该版本对应模板也将会删除，请做好备份">删除</a>
+				</td>
+			</tr>
+            </volist>
+		</tbody>
+	</table>
+	<div class="panelBar">
+		<div class="pages">
+			<span>显示</span>
+			<select class="combox" name="numPerPage" onchange="navTabPageBreak({numPerPage:this.value})">
+				<option value="20" <eq name="page.numPerPage" value="20">selected</eq> >20</option>
+				<option value="40" <eq name="page.numPerPage" value="40">selected</eq>>40</option>
+				<option value="80" <eq name="page.numPerPage" value="80">selected</eq>>80</option>
+				<option value="100" <eq name="page.numPerPage" value="100">selected</eq>>100</option>
+			</select>
+			<span>共<{$page.totalCount}>条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="<{$page.totalCount}>" numPerPage="<{$page.numPerPage}>" pageNumShown="10" currentPage="<{$page.pageNum}>"></div>
+	</div>
+</div>

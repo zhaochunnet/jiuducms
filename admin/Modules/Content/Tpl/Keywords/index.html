@@ -1,0 +1,43 @@
+<div class="pageContent">
+	<form method="post" action="<{:U('__MODULE__/update')}>&navTabId=__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);" >
+    	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="<{:U('__MODULE__/add')}>" target="dialog" rel="add" mask="true" width="400" height="270"><span>新增</span></a></li>
+			<li><a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&id={sid_user}&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除吗？" warn="请选择关键字"><span>删除</span></a></li>
+		</ul>
+		</div>
+        <table class="table" width="100%" layoutH="85">
+			<thead>
+                <tr>
+                    <th width="160" align="center">关键字</th>
+                    <th width="280" align="center">链接地址</th>
+                    <th width="100" align="center">频率</th>
+					<th width="100" align="center">操作</th>
+					<th width="80" align="center">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <volist id="vo" name="list">
+                <tr target="sid_user" rel="<{$vo.id}>">
+                    <td><input type="hidden" name="zhi[]" value="k<{$vo.id}>"/><input type="hidden" name="k<{$vo.id}>[id]" value="<{$vo.id}>"/><input type="text" name="k<{$vo.id}>[name]" style="width:95%;" value="<{$vo.name}>" /></td>
+                    <td><input type="text" name="k<{$vo.id}>[url]" style="width:95%;" value="<{$vo.url}>" /></td>
+                    <td><input name="k<{$vo.id}>[rate]" type="text" value="<{$vo.rate}>" style="width:20px;"/></td>
+					<td><label style="width:80px;"><input type="checkbox" name="k<{$vo.id}>[del]" value="1"/>删除</label></td>
+					<td><eq name="vo.status" value="1"><a href="<{:U('__MODULE__/forbid')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要禁用此关键字?"><img src="Public/Images/ok.gif" width="20" height="20" /></a><else/><a href="<{:U('__MODULE__/resume')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要启用此关键字?"><img src="Public/Images/error.gif" width="20" height="20" /></a></eq></td>
+                </tr>
+                </volist>
+            </tbody>
+		</table>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
+<style type="text/css">
+.grid .gridTbody td.bstring div{ height:100%;}
+</style>

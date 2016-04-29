@@ -1,0 +1,57 @@
+<div class="pageContent">
+	<form method="post" name="form1" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<input type="hidden" name="id" value="<{$vo.id}>">
+		<div class="pageFormContent" layoutH="57">
+            <p style=" width:98%;">
+            <label>专题分类：</label>
+            <select name="typeid">
+                <volist name="value" id="v">
+                <option <eq name="vo.cid" value="$v.id">selected="selected"</eq> value="<{$v.id}>"><{$v.name}></option>
+                </volist>
+			</select>
+            </p>
+			<p style=" width:98%;">
+				<label>专题名称：</label>
+				<input name="name" type="text" size="30" alt="请输入专题名称" value="<{$vo.name}>" class="required"/>
+			</p>
+			<p style="width:98%;">
+				<label>专题关键字：</label>
+				<input name="keywords" type="text" size="60" value="<{$vo.keywords}>"/>
+			</p>
+            <dl style="width:98%; height:68px;">
+			<dt>专题摘要：</dt>
+			<dd><textarea name="description" class="textInput" style="width:400px; height:60px;"><{$vo.description}></textarea></dd>
+			</dl>
+            <p style=" width:98%;">
+				<label>专题缩略图：</label>
+                <input name="ztpic" id="ztpic" type="text" value="<{$vo.ztpic}>"/><a onclick="upload('ztpic')" class="button uploadpic" href="javascript:;"><span>选择图片</span></a>
+			</p>
+			<p style=" width:98%;">
+				<label>是否生成静态：</label>
+				<label><input type="radio" name="isdefault" value="1" <eq name="vo.isdefault" value="1">checked="checked"</eq>>是</label>
+				<label><input type="radio" name="isdefault" value="0" <eq name="vo.isdefault" value="0">checked="checked"</eq>>否</label>
+			</p>
+			<p style=" width:98%;">
+				<label>存放目录：</label>
+				<input type="text" name="typedir" size="30" value="<{$vo.typedir}>">
+			</p>
+			<p style=" width:98%;">
+				<label>专题模版：</label>
+				<input name="index.temp" type="text" size="30" alt="请选择专题模版" value="<{$vo.tempindex}>" class="required"/>
+				<a class="btnLook" href="<{:U('Edition/Templets/public_list')}>" width="300" height="350" lookupGroup="index">选择模版</a>
+			</p>
+            <dl style="width:98%; height:36px;">
+			<dt>备注：</dt>
+			<dd><textarea name="remark" style="width:400px; height:60px;"><{$vo.remark}></textarea></dd>
+			</dl>
+            </div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>

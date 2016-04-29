@@ -1,0 +1,13 @@
+
+<div class="pageContent">
+	<div class="pageFormContent" layoutH="58">
+    		<foreach name="info" item="vo">
+				<a href="javascript:" onclick="$.bringBack({source:'<{$vo}>'})"><{$vo}></a>&nbsp;&nbsp;&nbsp;
+			</foreach>
+	</div>
+	<div class="formBar">
+		<ul>
+			<li><div class="button"><div class="buttonContent"><button class="close" type="button">关闭</button></div></div></li>
+		</ul>
+	</div>
+</div>

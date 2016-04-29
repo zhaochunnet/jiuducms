@@ -1,0 +1,24 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+    <input type="hidden" name="id" value="<{$id}>" />
+		<div class="pageFormContent" layoutH="58">
+            <p>
+            <label>移动到：</label>
+            <select name="pid" class="combox">
+				<option value="0" >顶级栏目&nbsp;&nbsp;&nbsp;</option>
+                <volist name="value" id="v">
+                <option value="<{$v.id}>"><{$v.fullname}></option>
+                </volist>
+			</select>
+            </p>
+            </div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>

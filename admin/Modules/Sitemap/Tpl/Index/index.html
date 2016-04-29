@@ -1,0 +1,40 @@
+<div class="pageContent">
+	<div class="panel" minH="50">
+		<h1>网站地图生成说明</h1>
+		<div>
+			<p>配置的相关参数在 【系统设置 -> 其他选项】中调整</p>
+		</div>
+	</div>
+	<div style="width:50%;float:left;">
+		<div class="panel" minH="30">
+			<h1>生成HTML地图</h1>
+			<div>
+				<form method="post" action="<{:U('__MODULE__/html')}>" class="pageForm required-validate" onsubmit="return validateCallback(this)">
+				<p style="margin:10px auto; width:250px;"><label>生成文件名：</label><input name="filename" style="width:150px;" type="text" class="required" value="sitemap.html"></p>
+				<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">开始生成</button></div></div></li>
+				</ul>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div style="width:50%;float:right;">
+		<div class="panel" minH="30">
+			<h1>生成XML地图</h1>
+			<div>
+				<form method="post" action="<{:U('__MODULE__/xml')}>" class="pageForm required-validate" onsubmit="return validateCallback(this)">
+				<p style="margin:10px auto; width:250px;"><label>生成文件名：</label><input name="filename" style="width:150px;" type="text" class="required" value="sitemap.xml"></p>
+				<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">开始生成</button></div></div></li>
+				</ul>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+

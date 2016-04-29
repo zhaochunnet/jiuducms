@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title><{$field.typename}> - <{$global.jiudu_webname}></title>
+<meta name="description" content="<{$global.jiudu_description}>" />
+<meta name="keywords" content="<{$global.jiudu_keywords}>" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta http-equiv="Cache-Control" content="must-revalidate,no-cache"/>
+<link rel="stylesheet" type="text/css" href="/templets/default/C/css/basic.css">
+</head>
+<body>
+<div class="wrapper">
+<include file="head.html" />
+<include file="nav.html" />
+    <div class="crumb">
+    	<p><{$newsnav}></p>
+    </div>
+    <div class="t">
+        	<h3><{$field.typename}></h3>
+        </div>
+    <div class="col-list">
+    	<ul>
+		<jiudu:channel type="son" row="20"> 
+			<li><a href="<{$jiudu.typeurl}>"  class="common"><{$jiudu.typename}></a></li>
+		</jiudu:channel>
+        </ul>
+    </div>
+<include file="foot.html" />
+</body>
+</html>

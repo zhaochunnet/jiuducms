@@ -1,0 +1,29 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<div class="pageFormContent" layoutH="57">
+			<p>
+				<label>标题：</label>
+				<input name="title" type="text" size="30" alt="请输入标题" class="required"/>
+			</p>
+            <div class="unit">
+				<label>PC端URL：</label>
+				<textarea name="pcurl" style="width:320px; height:50px;" class="required url"></textarea>
+			</div>
+			<div class="unit">
+				<label>手机端URL：</label>
+				<textarea name="phoneurl" style="width:320px; height:50px;" class="required url"></textarea>
+			</div>
+			<p>
+				<label>状态：</label>
+				<label style="width:60px;"><input type="radio" name="status" value="1" checked="checked"/>启用</label>
+				<label style="width:60px;"><input type="radio" name="status" value="0" />禁用</label>
+			</p>
+        </div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

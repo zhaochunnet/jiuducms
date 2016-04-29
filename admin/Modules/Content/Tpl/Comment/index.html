@@ -1,0 +1,64 @@
+<include file="Public:pagerForm" />
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="delete" href="index.php?g=Admin&m=__MODULE__&a=foreverdelete&id={sid_user}&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除吗？"><span>删除</span></a></li>
+			<li><a class="delete" href="index.php?g=Admin&m=__MODULE__&a=foreverdelete&navTabId=__MODULE__" target="selectedTodo" rel="id" postType="string" title="你确定要删除选中吗？"><span>删除选中</span></a></li>
+			<li><a class="icon" href="index.php?g=Admin&m=__MODULE__&a=checkPass&navTabId=__MODULE__" target="selectedTodo" rel="id" postType="string" title="你确定要批准选中吗？"><span>批准选中</span></a></li>
+			<li><a class="icon" href="index.php?g=Admin&m=__MODULE__&a=forbid&navTabId=__MODULE__" target="selectedTodo" rel="id" postType="string" title="你确定要驳回选中吗？"><span>驳回选中</span></a></li>
+			<li><a class="edit" href="index.php?g=Admin&m=__MODULE__&a=edit&id={sid_user}&navTabId=__MODULE__" target="dialog" rel="edit" mask="true" width="590" height="400"><span>编辑</span></a></li>
+		</ul>
+	</div>
+
+	<table class="list" width="100%" layoutH="53" >
+		<thead>
+			<tr>
+				<th width="20" align="center"><input type="checkbox" class="checkboxCtrl" group="id"/></th>
+				<th width="80" align="center">用户</th>
+				<th width="300" align="center">评论</th>
+                <th width="100" align="center">回应给</th>
+                <th width="20" style="text-align:center">审核</th>
+				<th width="70" style="text-align:center">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+        	<volist id="vo" name="list">
+			<eq name="vo.reply" value="0">
+			<tr target="sid_user" rel="<{$vo.id}>">
+				<td><input type="checkbox" name="id" value="<{$vo.id}>" /></td>
+				<td class="info"><p><img alt="" src="http://1.gravatar.com/avatar/<{$vo.email|strtolower|trim|md5}>?s=40&amp;d=&amp;r=G" height="40" width="40"></p>
+				<p><{$vo.name}><br/><{$vo.email}><br/><{$vo.ip}><br/></p>
+				</td>
+				<td>时间：<{$vo.time|date="Y-m-d H:i:s",###}><br/><{$vo.content}></td>
+				<td><{$vo.name}></td>
+				<td style="text-align:center"><eq name="vo.status" value="1"><a href="index.php?g=Admin&m=__MODULE__&a=forbid&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要驳回此评论?"><img src="/Public/Images/ok.gif" width="20" height="20" /></a><else/><a href="index.php?g=Admin&m=__MODULE__&a=checkPass&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要批准此评论?"><img src="/Public/Images/error.gif" width="20" height="20" /></a></eq></td>
+				<td><a href="index.php?g=Admin&m=__MODULE__&a=reply&id=<{$vo.id}>&aid=<{$vo.aid}>&navTabId=__MODULE__" target="dialog" rel="reply" mask="true" width="450" height="260">回复</a> | <a href="index.php?g=Admin&m=__MODULE__&a=edit&id=<{$vo.id}>&navTabId=__MODULE__" target="dialog" rel="edit" mask="true" width="590" height="400">编辑</a> | <a href="index.php?g=Admin&m=__MODULE__&a=foreverdelete&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除吗？">删除</a></td>
+			</tr>
+			<else/>
+			<tr target="sid_user" rel="<{$vo.id}>">
+				<td><input type="checkbox" name="id" value="<{$vo.id}>" /></td>
+				<td class="isreply"><p><img alt="" src="http://1.gravatar.com/avatar/<{$vo.email|strtolower|trim|md5}>?s=40&amp;d=&amp;r=G" height="40" width="40"></p>
+				<p><{$vo.name}><br/><{$vo.email}><br/><{$vo.ip}><br/></p>
+				</td>
+				<td>时间：<{$vo.time|date="Y-m-d H:i:s",###}><br/><{$vo.content}></td>
+				<td><{$arc[$vo['aid']]}></td>
+				<td style="text-align:center"><eq name="vo.status" value="1"><a href="index.php?g=Admin&m=__MODULE__&a=forbid&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要驳回此评论?"><img src="/Public/Images/ok.gif" width="20" height="20" /></a><else/><a href="index.php?g=Admin&m=__MODULE__&a=resume&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="确定要批准此评论?"><img src="/Public/Images/error.gif" width="20" height="20" /></a></eq></td>
+				<td><a href="index.php?g=Admin&m=__MODULE__&a=edit&id=<{$vo.id}>&navTabId=__MODULE__" target="dialog" rel="edit" mask="true" width="590" height="400">编辑</a> | <a href="index.php?g=Admin&m=__MODULE__&a=foreverdelete&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除吗？">删除</a></td>
+			</tr>
+			</eq>
+            </volist>
+		</tbody>
+	</table>
+	<div class="panelBar">
+		<div class="pages">
+			<span>共<{$totalCount}>条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="<{$totalCount}>" numPerPage="<{$numPerPage}>" pageNumShown="10" currentPage="<{$currentPage}>"></div>
+	</div>
+<style type="text/css">
+.info p{float: left;margin:5px;line-height:1.4em;}
+.isreply p{float: left;margin:5px 5px 5px 20px;line-height:1.4em;}
+</style>
+</div>
+
+

@@ -1,0 +1,90 @@
+<div class="pageContent watermark">
+	<form method="post" action="__SELF__&navTabId=watermark" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);" >
+    	<div class="panelBar"><ul class="toolBar"></ul></div>
+		<table class="table" width="100%" layoutH="63">
+                <tbody>
+                    <tr>
+                        <td width="20%" align="right">是否开启图片水印：</td>
+                        <td>
+                        <input type="radio" name="JIUDU_WATERMARK" value="1" <eq name="Think.config.jiudu_watermark" value="1">checked</eq>/>是&nbsp;&nbsp;
+                        <input type="radio" name="JIUDU_WATERMARK" value="0" <eq name="Think.config.jiudu_watermark" value="0">checked</eq>/>否
+                        </td>
+						<td width="45%"></td>
+                    </tr>
+					<tr>
+                        <td width="20%" align="right">选择水印的文件类型：</td>
+                        <td>
+                        <input type="radio" name="JIUDU_WATERMARK_D" value="1" <eq name="Think.config.jiudu_watermark_d" value="1">checked</eq>/>图片&nbsp;&nbsp;
+                        <input type="radio" name="JIUDU_WATERMARK_D" value="0" disabled="true" <eq name="Think.config.jiudu_watermark_d" value="0">checked</eq>/>文字
+                        </td>
+						<td width="45%"></td>
+                    </tr>
+					<tr>
+                        <td width="20%" align="right">添加水印的图片大小控制：</td>
+                        <td>&nbsp;宽：<input type="text" name="JIUDU_WATERMARK_W" style="width:40px;" value="<{$Think.config.jiudu_watermark_w}>" /> X 高：<input type="text" name="JIUDU_WATERMARK_H" style="width:40px;" value="<{$Think.config.jiudu_watermark_h}>" /></td>
+						<td width="45%">设置为0为不限</td>
+                    </tr>
+					<tr class="imgyulan">
+                        <td width="20%" align="right">水印图片预览：</td>
+                        <td class="td"><img src="<{$Think.config.jiudu_watermark_u}>"/></td>
+						<td width="45%"></td>
+                    </tr>
+					<tr>
+                        <td width="20%" align="right">水印图片文件名：</td>
+                        <td><input type="text" name="JIUDU_WATERMARK_U" id="JIUDU_WATERMARK_U"  value="<{$Think.config.jiudu_watermark_u}>" /><!--<a class="button uploadpic" onclick="upload('JIUDU_WATERMARK_U')" href="javascript:;"><span>选择图片</span></a>-->
+						</td>
+						<td width="45%">水印存放路径从网站根目录起</td>
+                    </tr>
+					<tr>
+                        <td width="20%" align="right">水印透明度：</td>
+                        <td>&nbsp;<input type="text" name="JIUDU_WATERMARK_T" style="width:80px;" value="<{$Think.config.jiudu_watermark_t}>" /></td>
+						<td width="45%">水印透明度（0—100，值越小越透明）</td>
+                    </tr>
+					<tr>
+                        <td width="20%" align="right">JPEG 水印质量：</td>
+                        <td>&nbsp;<input type="text" name="JIUDU_WATERMARK_Z" style="width:80px;" value="<{$Think.config.jiudu_watermark_z}>" /></td>
+						<td width="45%">水印质量请设置为0-100之间的数字,决定 jpg 格式图片的质量</td>
+                    </tr>
+					<tr class="shuiyinweizhi">
+                        <td width="20%" align="right">水印位置：</td>
+                        <td colspan="2">
+			<table width="100%" height="100%">
+            <tr>
+              <td rowspan="3"><label><input name="JIUDU_WATERMARK_L" value="10" <eq name="Think.config.jiudu_watermark_l" value="10">checked</eq> type="radio">随机位置</label></td>
+              <td><label><input name="JIUDU_WATERMARK_L" value="1" <eq name="Think.config.jiudu_watermark_l" value="1">checked</eq> type="radio">顶部居左</label></td>
+              <td><label><input name="JIUDU_WATERMARK_L" value="2" <eq name="Think.config.jiudu_watermark_l" value="2">checked</eq> type="radio">顶部居中</label></td>
+              <td><label><input name="JIUDU_WATERMARK_L" value="3" <eq name="Think.config.jiudu_watermark_l" value="3">checked</eq> type="radio">顶部居右</label></td>
+            </tr>
+            <tr>
+              <td><label><input name="JIUDU_WATERMARK_L" value="4" <eq name="Think.config.jiudu_watermark_l" value="4">checked</eq> type="radio">中部居左</label></td>
+              <td><label><input name="JIUDU_WATERMARK_L" value="5" <eq name="Think.config.jiudu_watermark_l" value="5">checked</eq> type="radio">中部居中</label></td>
+              <td><label><input name="JIUDU_WATERMARK_L" value="6" <eq name="Think.config.jiudu_watermark_l" value="6">checked</eq> type="radio">中部居右</label></td>
+            </tr>
+            <tr>
+              <td><label><input name="JIUDU_WATERMARK_L" value="7" <eq name="Think.config.jiudu_watermark_l" value="7">checked</eq> type="radio">底部居左</label></td>
+              <td><label><input name="JIUDU_WATERMARK_L" value="8" <eq name="Think.config.jiudu_watermark_l" value="8">checked</eq> type="radio">底部居中</label></td>
+              <td><label><input name="JIUDU_WATERMARK_L" value="9" <eq name="Think.config.jiudu_watermark_l" value="9">checked</eq> type="radio">底部居右</label></td>
+            </tr>
+          </table></td>
+                    </tr>
+                </tbody>
+			</table>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
+<style type="text/css">
+.watermark td{height:30px;}
+.watermark td div{height:30px; line-height:30px;}
+#JIUDU_WATERMARK_U{float:left; margin:0px 5px 0px 5px;}
+.grid .gridTbody .imgyulan{height:50px;}
+.grid .gridTbody .imgyulan .td div{height:50px; line-height:50px;}
+.grid .gridTbody .shuiyinweizhi{height:90px;}
+.grid .gridTbody .shuiyinweizhi div{height:90px; line-height:90px;}
+</style>

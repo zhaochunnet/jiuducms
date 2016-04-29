@@ -1,0 +1,47 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&navTabId=__MODULE__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<input name="type" type="hidden" value="Wap"/>
+		<div class="pageFormContent" layoutH="57">
+			<p>
+				<label>版本名称：</label>
+				<input name="name" type="text" size="30" alt="请输入版本名称" class="required"/>
+			</p>
+            <p>
+				<label>版本标识符：</label>
+				<input name="udid" type="text" size="30" class="required lettersonly"/>
+			</p>
+			<p>
+				<label>跳转类型：</label>
+				<label style="width:70px;"><input type="radio" name="iscore" class="iscore_type" value="1" checked="checked"/>跳转本站</label>
+				<label style="width:100px;"><input type="radio" name="iscore" class="iscore_type" value="0"/>跳转站外URL</label>
+			</p>
+			<p class="iscore_url_p" style="display:none;">
+				<label>站外URL：</label>
+				<input name="url" type="text" size="30" class="iscore_url url"/>
+			</p>
+            <div class="unit">
+				<label>备注：</label>
+				<textarea name="remark" style="width:320px; height:50px;"></textarea>
+			</div>
+            </div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+$(function(){
+	$(".iscore_type").click(function(){
+		if($(this).val() == 0){
+			$('.iscore_url_p').show();
+			$('.iscore_url').addClass('required');
+		}else{
+			$('.iscore_url_p').hide();
+			$('.iscore_url').removeClass('required');
+		}
+	});
+})
+</script>

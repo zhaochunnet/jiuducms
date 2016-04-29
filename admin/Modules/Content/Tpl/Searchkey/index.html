@@ -1,0 +1,48 @@
+<form id="pagerForm" action="__SELF__" method="post">
+	<input type="hidden" name="pageNum" value="<{$page.pageNum}>"/>
+	<input type="hidden" name="numPerPage" value="<{$page.numPerPage}>"/>
+	<input type="hidden" name="_order" value="<{$_REQUEST._order}>"/>
+	<input type="hidden" name="_sort" value="<{$_REQUEST._sort}>"/>
+</form>
+<div class="pageContent">
+    <div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&id={sid_user}&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除吗？"><span>删除</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="75">
+		<thead>
+			<tr>
+				<th width="40" align="center">ID</th>
+				<th width="200" align="center" orderField="keyword" <if condition="$_REQUEST._order eq 'keyword'">class="<{$_REQUEST._sort}>"</if>>关键字</th>
+				<th width="200" align="center" orderField="count" <if condition="$_REQUEST._order eq 'count'">class="<{$_REQUEST._sort}>"</if>>搜索次数</th>
+				<th width="100" align="center" orderField="lasttime" <if condition="$_REQUEST._order eq 'lasttime'">class="<{$_REQUEST._sort}>"</if>>最后搜索时间</th>
+				<th width="100" align="center">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<volist id="vo" name="list">
+			<tr target="sid_user" rel="<{$vo.id}>">
+				<td><{$vo.id}></td>
+				<td><{$vo.keyword}></td>
+				<td><{$vo.count}></td>
+				<td><{$vo.lasttime|date="Y-m-d H:i:s",###}></td>
+				<td><a class="delete" href="<{:U('__MODULE__/foreverdelete')}>&id=<{$vo.id}>&navTabId=__MODULE__" target="ajaxTodo" title="你确定要删除吗？">删除</a></td>
+			</tr>
+			</volist>
+		</tbody>
+	</table>
+	<div class="panelBar">
+		<div class="pages">
+			<span>显示</span>
+			<select class="combox" name="numPerPage" onchange="navTabPageBreak({numPerPage:this.value})">
+				<option value="20" <eq name="page.numPerPage" value="20">selected</eq> >20</option>
+				<option value="40" <eq name="page.numPerPage" value="40">selected</eq>>40</option>
+				<option value="80" <eq name="page.numPerPage" value="80">selected</eq>>80</option>
+				<option value="100" <eq name="page.numPerPage" value="100">selected</eq>>100</option>
+			</select>
+			<span>共<{$page.totalCount}>条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="<{$page.totalCount}>" numPerPage="<{$page.numPerPage}>" pageNumShown="10" currentPage="<{$page.pageNum}>"></div>
+	</div>
+</div>

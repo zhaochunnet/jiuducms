@@ -1,0 +1,28 @@
+<div class="pageContent">
+	<form method="post" action="__SELF__&callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+    	<input type="hidden" name="role_id" value="<{$role_id}>" />
+		<div class="pageFormContent" layoutH="58">
+			<volist id="v1" name="list">
+			<fieldset>
+				<legend><{$v1.title}></legend>
+				<volist id="v2" name="v1['m']">
+				<dl class="nowrap">
+					<dt><label><input type="checkbox" class="checkboxCtrl" value="<{$v2.id}>" <eq name="v2.type" value="1">checked="checked"</eq> group="jd[<{$v1.name}><{$v2.name}>][]"><b><{$v2.title}></b></label></dt>
+					<dd>
+						<volist id="v3" name="v2['a']">
+						<label><input type="checkbox" name="jd[<{$v1.name}><{$v2.name}>][]" <eq name="v3.type" value="1">checked="checked"</eq> value="<{$v1.name}>,<{$v2.name}>,<{$v3.name}>,<{$v3.id}>"><{$v3.title}></label>
+						</volist>
+					</dd>
+				</dl>
+				</volist>
+			</fieldset>
+			</volist>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

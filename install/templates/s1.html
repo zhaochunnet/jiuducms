@@ -1,0 +1,30 @@
+<?php include_once ('./templates/header.html'); ?>
+
+<div class="right">
+    <h2>Step <?php echo $step;?> of 5 </h2>
+
+    <h1>阅读许可协议</h1>
+
+    <div class="pact">
+
+        <h4>JiuduCMS内容管理系统系统最终用户授权许可协议。</h4>
+        <p>感谢您选择JiuduCMS内容管理系统（以下简称JiuduCMS）。</p>
+        <p>JiuduCMS的官方网址是： <a href="http://www.jiuducms.com" target="_blank">www.jiuducms.com</a> </p>
+        <p>为了使你正确并合法的使用本软件，请你在使用前务必阅读清楚下面的协议条款：</p>
+        <p>1、未获商业授权之前，不得将本软件用于商业用途（包括但不限于企业网站、经营性网站、以营利为目的或实现盈利的网站）。购买商业授权请登陆 www.jiuducms.com 了解最新说明。</p>
+        <br>
+    </div>
+
+    <div class="readpact">
+        <input name="readpact" type="checkbox" checked id="readpact" value="" /><label for="readpact"><strong>我已经阅读并同意此协议</strong></label>
+    </div>
+    <div class="butbox">
+        <input type="button" class="inputButton" value=" 下一步 " onclick="document.getElementById('readpact').checked ?window.location.href='index.php?step=2' : alert('您必须同意软件许可协议才能安装使用本系统。');" />
+    </div>
+</div>
+
+</div>
+<div class="power">Powered by <a href="http://www.jiuducms.com" target="_blank">JiuduCMS <?php echo JIUDU_VERSION;?></a></div>
+</div></div>
+</body>
+</html>
